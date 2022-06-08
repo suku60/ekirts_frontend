@@ -23,7 +23,7 @@ const Form = (props) => {
   const [formDisplay, setFormDisplay] = useState("none");
   const [notificationDisplay, setNotificationDisplay] = useState("none");
 
-  const [customMsg, setCustomMsg] = useState("lore ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem, doloremque. Quasi, quisquam, quidem, doloremque. Quasi, quisquam, quidem, doloremque.");
+  const [customMsg, setCustomMsg] = useState("");
 
   const [loaderDisplay, setLoaderDisplay] = useState("none");
 

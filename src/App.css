@@ -1,10 +1,5 @@
 @import url("../src/assets/css/animations.css");
 
-/* font- family: 'Oswald', sans-serif: font for headers */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-/* font- family: 'Montserrat', sans-serif: font for texts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
-
 .App {
   text-align: center;
 

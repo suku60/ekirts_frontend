@@ -4,11 +4,17 @@ h2 {
 }
 
 .home {
-    background-color: whitesmoke;
-
-    background-position: center;
-    background-position-y: top;
-    background-repeat: no-repeat;
+    background:
+    radial-gradient(white 15%, transparent 16%) 0 0,
+    radial-gradient(white 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(0, 0, 0, 0.3) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(0, 0, 0, 0.3) 15%, transparent 20%) 8px 9px;
+    background-color:#d6d6d6;
+    background-size:16px 16px;
+    
+    /* background-position: center;
+    background-position-y: top; */
+    /* background-repeat: no-repeat; */
 
     min-height: 100%;
     min-width: 100%;
@@ -30,7 +36,7 @@ h2 {
     height: 100%;
     width: 100%;
 
-    background: linear-gradient(transparent 2%, hsl(157, 100%, 0%, .8) 45%);
+    background: linear-gradient(transparent 1%, hsl(157, 100%, 0%, .8) 95%);
 
     /* Property to erase whitespace between top and background */
     background-position-y: top;
@@ -52,11 +58,11 @@ h2 {
 }
 
 .welcome_text {
-    background-color: whitesmoke;
 
     text-align: center;
     font-size: 3em;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    
 
     /* position: absolçute; */
     z-index: 6;
@@ -65,18 +71,16 @@ h2 {
 }
 
 .welcome_subtext {
-    background-color: whitesmoke;
 
-
-    width: 100%;
 
     z-index: 6;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Press Start 2P', cursive;
 
 }
 
 .subtext_join {
     /* margin-top: 5%; */
+    height: 4rem;
     text-align: center;
     
     margin-top: 2%;
@@ -87,22 +91,28 @@ h2 {
 
 
 .temporaryBtn {
-    background-color: whitesmoke;
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
 
-    border-radius: 1.5em;
+
+    font-family: 'Press Start 2P', cursive;
 
     height: 2.7rem;
-    width: 9rem;
+    width: 15rem;
 
     margin-block: .5em;
 
     cursor: pointer;
 
     z-index: 7;
+
+    transition: .2s;
 }
 
 .temporaryBtn:hover {
     background-color: #acacac;
+    width: 100%;
+
+    transition: .2s;
 }
 
 .btn_register {

@@ -21,7 +21,7 @@ function App() {
         },
         {zIndex: "3",
         name: "Lobbies",
-        path: "/Lobbies"
+        path: "/lobbies"
         },
         {zIndex: "2",
         name: "Profile",
@@ -35,7 +35,7 @@ function App() {
         <Routes>
           <Route path="*" element={<Home/>}/>
           <Route path="/" element={<Home/>}/>
-          <Route path="/Lobbies" element={<Lobbies/>}/>
+          <Route path="/lobbies" element={<Lobbies/>}/>
           <Route path="/profile/:id" element={<Profile/>}/>
           <Route path="/search" element={<Search/>}/>
           

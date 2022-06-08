@@ -4,77 +4,66 @@ import axios from 'axios';
 
 import './Lobbies.css';
 import { getValue } from '@testing-library/user-event/dist/utils';
+import Lobby from '../../Components/Lobby/Lobby';
 
 const Lobbies = () => {
 
-  const [memes, setMemes] = useState([]);
-  const [page, setPage] = useState(1);
+  const [lobbies, setLobbies] = useState([]);
 
   const [notificationDisplay, setNotificationDisplay] = useState("none");
   const [customMsg, setCustomMsg] = useState("");
-
-  const [star, setStar] = useState("");
 
   useEffect(() => {
   });
 
   useEffect(() => {
   },[]);
-
-  // Local functions
-  const loadMore = () => {
-    getMemes(page + 1);
-  }
  
 
   // Services
-  const getMemes = async (page) => {
-    console.log("working")
+//   const bringAvailableLobbies = async () => {
 
-    if(memes.length === 0){
+//     let dataResponse;
 
-      try {
+//     try {
+//         let config = {
+//           headers: { Authorization: `Bearer ${props?.passport?.token}` }
+//         };
+
+//         let dataResponse = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/findAvailable`, config);
         
-        console.log("inside try")
-        let memesResult = await axios.get(`https://socialmeme.herokuapp.com/posts/get10?page=${page}`);
+//         if (dataResponse.data.length !== 0) {
+//             setLobbies(dataResponse.data)
+//         }
 
-        setMemes(memesResult.data)
-        
-        console.log("result:", memesResult.data)
-        // try later: what happens if we get less than 10 memes. 
-        
-      } catch (error) {
-        
-        setNotificationDisplay("flex");
-        setCustomMsg("Something went wrong, please try again later");
-        console.log(error)
-      }  
-    }
+//     } catch (error) {
 
-  }
+//       setNotificationDisplay("flex");
+//         setCustomMsg("Something went wrong, please try again later");
+//         console.log(error)
 
-  getMemes();
-  console.log("memes?", memes, typeof(memes))
+
+//     }
+
+
+//   }
+
+//   bringAvailableLobbies();
 
   return (
     <div className="box_basic_container Lobbies" id='animItemFallingFromTop'>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-      <div className="board left_content">
-        {memes?.map(memeObject => {
-           return (
-             <div className="card" key={memeObject._id}>
-                <div className="container_card_img">
-                  <img className='img_meme' src={memeObject.img} alt={memeObject.title} />
-                </div>
-                <div className="container_card_data">
-                  data here
-                </div>                                 
-             </div>
-             )
-        })}
+      <div className="board">
+        <Lobby/>
       </div>
     </div>
   )
 }
+
+// id
+// lobbyName
+// turnSecondsTimer
+// gameMaxMinutesTimer
+// playersSize
 
 export default Lobbies;

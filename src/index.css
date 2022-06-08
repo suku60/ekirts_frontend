@@ -1,3 +1,9 @@
+/* Home big game font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Loader font & small details */
+@import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
+
 :root {
 
   --transition-1: .2s;
