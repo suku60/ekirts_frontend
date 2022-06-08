@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Lobbies.css';
 import { getValue } from '@testing-library/user-event/dist/utils';
-import Lobby from '../../Components/Lobby/Lobby';
+import Lobby from '../../Components/LobbyCard/LobbyCard';
 
 const Lobbies = () => {
 
@@ -54,7 +54,20 @@ const Lobbies = () => {
     <div className="box_basic_container Lobbies" id='animItemFallingFromTop'>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
       <div className="board">
+        <Lobby
+        id="2"
+        lobbyName="Lobby 1"
+        playersSize="2"
+        turnSecondsTimer="30"
+        gameMaxMinutesTimer="60"
+        />
         <Lobby/>
+        <Lobby/>
+        <Lobby/>
+        <Lobby/>
+        <Lobby/>
+        <Lobby/>
+
       </div>
     </div>
   )

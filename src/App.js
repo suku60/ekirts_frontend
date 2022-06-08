@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Lobbies from './Containers/Lobbies/Lobbies';
 import Home from './Containers/Home/Home';
-import Profile from './Containers/Profile/Profile';
+import Lobby from './Containers/Lobby/Lobby';
 import Search from './Containers/Search/Search';
 
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -24,8 +24,8 @@ function App() {
         path: "/lobbies"
         },
         {zIndex: "2",
-        name: "Profile",
-        path: "/profile/:id"
+        name: "Lobby",
+        path: "/Lobby/:id"
         },
         {zIndex: "1",
         name: "Search",
@@ -36,7 +36,7 @@ function App() {
           <Route path="*" element={<Home/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="/lobbies" element={<Lobbies/>}/>
-          <Route path="/profile/:id" element={<Profile/>}/>
+          <Route path="/Lobby/:id" element={<Lobby/>}/>
           <Route path="/search" element={<Search/>}/>
           
         </Routes>

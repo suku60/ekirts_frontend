@@ -9,7 +9,7 @@ const initialState = {
     answer:{}
 };
 
-const profileDataReducer = (state = initialState, action) => {
+const LobbyDataReducer = (state = initialState, action) => {
     switch(action.type){
         case SELECT_POST :
             return {...state, post: action.payload};
@@ -24,4 +24,4 @@ const profileDataReducer = (state = initialState, action) => {
     }
 }
 
-export default profileDataReducer;
+export default LobbyDataReducer;

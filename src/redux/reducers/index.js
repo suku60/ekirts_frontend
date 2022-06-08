@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
 
 import passport from './loginData-reducer';
-import profileData from './profileData-reducer';
+import LobbyData from './LobbyData-reducer';
 
 const rootReducer = combineReducers({
 
     passport,
-    profileData
+    LobbyData
 
 });
 

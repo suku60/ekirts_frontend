@@ -1,0 +1,141 @@
+svg {
+
+    height: 100%;
+    width: 100%;
+    margin: 15%;
+}
+.box_lobby_card {
+    background-color: hsl(0, 0%, 73%, .8);
+    
+    height: 20%;
+    width: 97%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-block: .5em;
+    margin-left: 2.5%;
+}
+
+.box_lobby_card:first-child {
+    margin-top: 5%;
+}
+
+.lobby_card_name, .lobby_card_data {
+
+    height: 100%;
+    margin-inline: .5em;
+
+}
+
+.lobby_card_name {
+    background-color: green;
+
+    width: 33%;
+}
+
+.lobby_card_data {
+    background-color: greenyellow;
+
+    width: 58%;
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.lobby_name {
+    background-color: blue;
+
+    height: 15%;
+    width: 100%;
+
+}
+
+.temporary_join_btn { 
+    background-color: whitesmoke;
+    height: 15%;
+    width: 100%;
+
+    cursor: pointer;
+
+}
+
+.lobby_data {
+    background-color: lightblue;
+
+    overflow: hidden;
+
+    height: 95%;
+    width: 30%;
+
+    margin-inline: 1%;
+    padding: .5%;
+}
+
+.lobby_data:last-child {
+    width: 15%;
+}
+
+/* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 800px) {
+    svg {
+        margin: 10%;
+    }
+
+    .box_lobby_card {
+        flex-direction: column;
+    }
+    
+    .box_lobby_card:first-child {
+        margin-top: 2%;
+    }
+    
+    .lobby_card_name, .lobby_card_data {
+    
+        width: 100%;
+        margin-inline: .5em;
+    
+    }
+    
+    .lobby_card_name {
+        height: 20%;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .lobby_card_data {
+        height: 80%;
+    }
+
+    .lobby_name {
+        height: 100%;
+        width: 70%;
+    
+    }
+
+    .temporary_join_btn { 
+        height: 100%;
+        width: 30%;
+    
+        cursor: pointer;
+    
+    }
+}
+
+/* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 600px) {
+}
+
+/* 360PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 500px) {
+  }
+
