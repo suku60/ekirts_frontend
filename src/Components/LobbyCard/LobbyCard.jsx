@@ -26,9 +26,15 @@ const LobbyCard = (props) => {
           <PlayersSvg/>
           {props.playersSize}
         </div>
+       
         <div className="lobby_data centered_content">
           <TimerSvg/>
           {props.turnSecondsTimer}s | {props.gameMaxMinutesTimer}min
+        </div>
+        <div className="lobby_data status centered_content">
+          status
+          acive/inactive
+          public/private
         </div>
         <div className="lobby_data centered_content">
           <EyeSvg/>

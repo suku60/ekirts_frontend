@@ -1,13 +1,12 @@
+
 import {combineReducers} from 'redux';
 
 import passport from './loginData-reducer';
-import LobbyData from './LobbyData-reducer';
+import lobby from './lobbyData-reducer';
 
 const rootReducer = combineReducers({
-
     passport,
-    LobbyData
-
+    lobby
 });
 
 export default rootReducer;

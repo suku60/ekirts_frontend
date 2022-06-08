@@ -1,24 +1,21 @@
-import { LOGIN, LOGOUT, UPDATE_passport } from '../types';
+import {LOGIN, LOGOUT} from '../types';
 
 const initialState = {
-    token: '',
-    user: {}
+    token : '',
+    user : {}
 };
 
-const reducerLoginData = (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN:
+const loginDataReducer = (state = initialState, action) => {
+    switch(action.type){
+        case LOGIN :
             return action.payload;
 
-        case LOGOUT:
+        case LOGOUT : 
             return initialState;
 
-        case UPDATE_passport:
-            return {...state, user: action.payload}
-
-        default:
+        default :
             return state
     }
 }
 
-export default reducerLoginData;
+export default loginDataReducer;

@@ -6,7 +6,7 @@ import './Lobbies.css';
 import { getValue } from '@testing-library/user-event/dist/utils';
 import Lobby from '../../Components/LobbyCard/LobbyCard';
 
-const Lobbies = () => {
+const Lobbies = (props) => {
 
   const [lobbies, setLobbies] = useState([]);
 
@@ -21,52 +21,50 @@ const Lobbies = () => {
  
 
   // Services
-//   const bringAvailableLobbies = async () => {
+  const bringAvailableLobbies = async () => {
 
-//     let dataResponse;
+    let dataResponse;
 
-//     try {
-//         let config = {
-//           headers: { Authorization: `Bearer ${props?.passport?.token}` }
-//         };
+    try {
+        let config = {
+          headers: { Authorization: `Bearer ${props?.passport?.token}` }
+        };
 
-//         let dataResponse = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/findAvailable`, config);
+        let dataResponse = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/findAvailable`, config);
         
-//         if (dataResponse.data.length !== 0) {
-//             setLobbies(dataResponse.data)
-//         }
+        if (dataResponse.data.length !== 0) {
+            setLobbies(dataResponse.data)
+        }
 
-//     } catch (error) {
+    } catch (error) {
 
-//       setNotificationDisplay("flex");
-//         setCustomMsg("Something went wrong, please try again later");
-//         console.log(error)
-
-
-//     }
+      setNotificationDisplay("flex");
+        setCustomMsg("Something went wrong, please try again later");
+        console.log(error)
 
 
-//   }
+    }
 
-//   bringAvailableLobbies();
+
+  }
+
+  bringAvailableLobbies();
 
   return (
     <div className="box_basic_container Lobbies" id='animItemFallingFromTop'>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
       <div className="board">
+        
+      { lobbies.map(lobbyObject => { 
         <Lobby
-        id="2"
-        lobbyName="Lobby 1"
-        playersSize="2"
-        turnSecondsTimer="30"
-        gameMaxMinutesTimer="60"
+        id={lobbyObject.id}
+        lobbyName={lobbyObject.lobbyName}
+        playersSize={lobbyObject.playersSize}
+        turnSecondsTimer={lobbyObject.turnSecondsTimer}
+        gameMaxMinutesTimer={lobbyObject.gameMaxMinutesTimer}
         />
-        <Lobby/>
-        <Lobby/>
-        <Lobby/>
-        <Lobby/>
-        <Lobby/>
-        <Lobby/>
+       })}
+        
 
       </div>
     </div>
