@@ -1,0 +1,167 @@
+h2 {
+    margin: 0%;
+
+}
+
+.home {
+    background-color: whitesmoke;
+
+    background-position: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+
+    min-height: 100%;
+    min-width: 100%;
+
+    z-index: 3;
+}
+
+.background_sides {
+    background: linear-gradient(90deg, hsl(157, 100%, 0%) 10%, transparent, transparent, transparent, hsl(157, 100%, 0%) 90%);
+
+    position: absolute;
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+}
+
+.background_cover {
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(transparent 2%, hsl(157, 100%, 0%, .8) 45%);
+
+    /* Property to erase whitespace between top and background */
+    background-position-y: top;
+
+    position: absolute;
+    z-index: 4;
+}
+
+.box_home_container {
+    width: 100%;
+    height: 100%;
+
+    padding-top: 25%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome_text {
+    background-color: whitesmoke;
+
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Oswald', sans-serif;
+
+    /* position: absolçute; */
+    z-index: 6;
+
+
+}
+
+.welcome_subtext {
+    background-color: whitesmoke;
+
+
+    width: 100%;
+
+    z-index: 6;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.subtext_join {
+    /* margin-top: 5%; */
+    text-align: center;
+    
+    margin-top: 2%;
+
+    letter-spacing: .15em;
+
+}
+
+
+.temporaryBtn {
+    background-color: whitesmoke;
+
+    border-radius: 1.5em;
+
+    height: 2.7rem;
+    width: 9rem;
+
+    margin-block: .5em;
+
+    cursor: pointer;
+
+    z-index: 7;
+}
+
+.temporaryBtn:hover {
+    background-color: #acacac;
+}
+
+.btn_register {
+
+    top: 50%;
+
+    z-index: 7;
+
+    margin-bottom: 25%;
+}
+
+/* 1500PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 1500px) {
+    .background_sides {
+        background: transparent;
+
+    }
+}
+
+/* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 800px) {
+
+    .box_home_container {
+        padding-top: 15%;
+        justify-content: flex-start;
+
+    }
+
+    .welcome_text, .subtext_quote {
+        margin-inline: 5%;
+
+    }
+
+    .btn_register {
+        margin-bottom: 25%;
+    
+    }
+
+
+    .temporaryBtn {
+        height: 2rem;  
+    }
+}
+
+/* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 600px) {
+
+    .welcome_text {
+        text-align: left;
+    }
+
+    .home {
+        background-position-x: 55%;
+    }
+
+}
+
+/* 400PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 400px) {
+
+
+}

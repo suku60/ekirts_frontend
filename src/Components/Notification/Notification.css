@@ -1,0 +1,64 @@
+.box_notification {
+
+    background-color: rgba(119, 36, 36, 1);
+
+    color: whitesmoke;
+
+    position: absolute;
+    z-index: 11;
+    right: 0%;
+    top: 70%;
+
+    width: fit-content;
+    height: fit-content;
+
+    padding-inline: .8em;
+    padding-right: 20%;
+    padding-left: 6%;
+
+    margin-left: 10%;
+
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.notification_close_button {
+    position: absolute;
+    left: 0%;
+    z-index: 12;
+
+    background-image: url("../../assets/svg/CloseNotification.svg");
+
+    height: 100%;
+    width: 5%;
+
+    cursor: pointer;
+}
+
+/* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 1200px) {
+    .box_notification {}
+
+    .notification_close_button {
+        height: 100%;
+        width: 10%;
+    }
+
+}
+
+/* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 600px) {
+    .box_notification {
+
+        padding-left: 16%;
+
+    }
+
+    .notification_close_button {
+        height: 100%;
+        width: 15%;
+    }
+}

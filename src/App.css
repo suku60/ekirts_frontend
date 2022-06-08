@@ -1,0 +1,87 @@
+@import url("../src/assets/css/animations.css");
+
+/* font- family: 'Oswald', sans-serif: font for headers */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+/* font- family: 'Montserrat', sans-serif: font for texts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.App {
+  text-align: center;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+/* GLOBAL COMMON CLASSES */
+
+/* POSITIONING */
+/* centered children */
+
+.centered_content {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.left_content {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: 0%;
+  box-sizing: border-box;
+
+}
+
+/* BOXES */
+
+.box_basic_container {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+}
+
+.board {
+    background-color: red;
+
+    width: var(--board-width-Max);
+    height: 100vh;
+
+    overflow-x: scroll;
+    scrollbar-color: transparent transparent;
+    scrollbar-base-color: transparent;
+}
+
+/* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 1200px) {
+    .board {
+        margin-left: 15%;
+        width: var(--board-width-1200px-br);
+    }
+}
+
+/* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
+
+@media screen and (max-width: 600px) {
+  .board {
+      margin-left: 0%;
+      left: 0%;
+      width: var(--board-width-600px-br);
+  }
+}
+
+
+
+
