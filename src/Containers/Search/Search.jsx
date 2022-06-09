@@ -5,8 +5,8 @@ const Search = () => {
 
 
   return (
-    <div className="box_basic_container search" id='animItemFallingFromTop'>
-      <div className="board">
+    <div className="box_basic_container search">
+      <div className="board"  id='animItemFallingFromTop'>
       </div>
     </div>
   )

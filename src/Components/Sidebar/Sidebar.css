@@ -46,7 +46,8 @@ ul li:last-child {
 
 ul li:hover {
 
-    background-color: hsl(145, 51%, 50%);
+    color: white;
+    background-color: hsl(0, 0%, 0%);
 
 }
 
@@ -62,7 +63,7 @@ ul li:hover {
 
 @media screen and (max-width: 600px) {
   ul {
-    background-color: blue;
+    background-color: whitesmoke;
 
     top: unset;
     bottom: 0%;
@@ -120,5 +121,9 @@ ul li:hover {
         margin-block: .2em;
     
     }    
+    
+  ul li:last-child {
+    margin-bottom: 0em;
+  }
   }
 

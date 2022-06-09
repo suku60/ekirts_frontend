@@ -5,8 +5,8 @@ const Lobby = () => {
 
 
   return (
-    <div className="box_basic_container Lobby" id='animItemFallingFromTop'>
-      <div className="board">
+    <div className="box_basic_container Lobby">
+      <div className="board" id='animItemFallingFromTop'>
       </div>
     </div>
   )

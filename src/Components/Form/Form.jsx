@@ -7,6 +7,11 @@ import './Form.css';
 import Notification from '../Notification/Notification';
 import Loader from '../Loader/Loader';
 
+
+// REDUX
+import { connect } from 'react-redux';
+import { LOGIN } from '../../redux/types';
+
 const Form = (props) => {
 
   let navigate = useNavigate();
@@ -110,20 +115,24 @@ const Form = (props) => {
 
       try {
 
-        loginResult = await axios.post("https://socialmeme.herokuapp.com/users/login", body)
+        let config = {
+          headers: { Authorization: `Bearer ${props?.passport?.token}` }
+        };
+
+        loginResult = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/users/login`, body, config)
         console.log("we're getting this from database:", loginResult)
 
         if (loginResult.data.token) {
           setCustomMsg(`Welcome to the family ${loginResult.data.user.username}!
           You will be redirected to Lobbies`);
 
+          props.dispatch({ type: LOGIN, payload: loginResult.data });
+
           setTimeout(() => {
-
             navigate("/Lobbies")
-
-            // props.dispatch({ type: LOGIN, payload: loginResult.data });
-
+            
           }, 1800)
+
         } else {
 
           setCustomMsg("Wrong username or password");
@@ -135,6 +144,10 @@ const Form = (props) => {
       } catch (loginError) {
 
         setCustomMsg("There has been a problem with the server, please try again later");
+
+        setTimeout(() => {
+          setLoaderDisplay("none");
+         }, 1000);
 
         console.log("Server error", loginError)
       }
@@ -270,4 +283,7 @@ switch(formType){
  }
 }
 
-export default Form;
+export default connect((state) => ({
+  passport: state.passport,
+  lobby: state.lobby
+}))(Form);
