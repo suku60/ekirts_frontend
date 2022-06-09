@@ -18,13 +18,11 @@ const Form = (props) => {
   let navigate = useNavigate();
 
   // validations variables
-
   let validationsError;
   let passwordLenghtError;
   let wrongPasswordError;
 
   // Hooks
-
   const [formType, setFormType] = useState(props.formType || undefined);
   const [formDisplay, setFormDisplay] = useState("none");
   
@@ -56,6 +54,7 @@ const Form = (props) => {
     if(props.formType === "register"){
 
       setUserData({
+        birthdate: "",
         email: "",
         username: "",
         password: "",
@@ -73,15 +72,11 @@ const Form = (props) => {
   },[props.displayFromParent, props.formType, customMsg]);
 
   // Handler function
-
   const fillForm = (e) => {
-
     setUserData({ ...userData, [e.target.name]: e.target.value })
-
   }
 
   // Services
-
   const Login = async () => {
 
     let fieldsToValidate = Object.entries(userData);
@@ -171,11 +166,97 @@ const Form = (props) => {
     }
 
   }
-  console.log("userdata:", userData)
 
-  // this has to be refactored soon
+  const Register = async () => {
 
+    let fieldsToValidate = Object.entries(userData);
+    let error = "";
+
+    setCustomMsg("");
+
+
+    // Validating inputs
+    for (let element of fieldsToValidate) {
+
+      error = validateInputs(element[0], element[1]);
+
+      if (error !== "ok") {
+        setCustomMsg("Fields cannot be empty");
+
+        validationsError = true;
+
+        return
+
+      } else if (error === "ok") {
+        setCustomMsg("");
+
+        validationsError = false;
+      }
+    }
+
+    let body = {
+          birthdate: userData.birthdate + " 00:00:00",
+          username: userData.username,
+          password: userData.password,
+          email: userData.email
+    }
+
+    let registerResult;
+
+    if (!validationsError && !wrongPasswordError && !passwordLenghtError) {
+      
+      console.log("entro en la segynda?")
+      setLoaderDisplay("flex")
+
+      try {
+
+        registerResult = await axios.post(`${developmentURL}/users/create`, body)
+        console.log("we're getting this from database:", registerResult)
+
+        if(!registerResult?.data?.user){
+
+          setTimeout(() => {
+            setCustomMsg(registerResult?.data?.msg)
+              setTimeout(() => {
+                setLoaderDisplay("none");
+              }, 1500);
+            }, 1000);
+          
+
+
+        }else{
+
+          setCustomMsg(`Welcome to the family ${registerResult.data.user.username}!
+          Please log in to confirm your account`);
+
+          setTimeout(() => {
+            navigate("/lobbies")
+            setLoaderDisplay("none");
+            }, 3500);
+
+
+        }
+
+      } catch (registerError) {
+          setCustomMsg("There has been a problem with the server, please try again later");
+
+        setTimeout(() => {
+          setLoaderDisplay("none");
+        }, 500);
+
+        setTimeout(() => {
+          setCustomMsg("");
+        }, 3000);
+
+        console.log("Server error", registerError)
+      }
+    }
+
+  }
+
+  console.log("userData", userData)
   
+  // this has to be refactored soon 
 switch(formType){
 
   case "register":
@@ -195,6 +276,12 @@ switch(formType){
           required/>
           <input 
           onChange={(e) => { fillForm(e) }} 
+          type="date" 
+          name="birthdate" 
+          placeholder="birthdate" 
+          required/>
+          <input 
+          onChange={(e) => { fillForm(e) }} 
           type="text" 
           name="username" 
           placeholder="username" 
@@ -208,13 +295,13 @@ switch(formType){
           <input 
           onChange={(e) => { fillForm(e) }} 
           type="password" 
-          name="confirmation" 
+          name="passwordConfirmation" 
           placeholder="confirm your password" 
           required/>
           <p>By clicking Register, you'll agree you are over 18 and our <a href="https://blank.page/">Privacy Policy</a>.</p>
-          <button 
-          className='form_button' 
-          onClick={()=>{}}>Register</button>
+          <div 
+            className='form_button' 
+            onClick={() => Register()}>Register</div>
         </form>
       </div>
     </div>
