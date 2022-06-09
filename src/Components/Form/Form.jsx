@@ -142,7 +142,7 @@ const Form = (props) => {
         }
       } catch (loginError) {
 
-        if(loginError.response.status === 401){
+        if(loginError.response.status === 401 || 400){
         
           setCustomMsg("Wrong username or password");
         
@@ -264,7 +264,7 @@ switch(formType){
     <div className='box_form centered_content' id="animReverseFade" style={{display: formDisplay}}>
       <Loader loaderState={loaderDisplay}/>  
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-      <div className="form_container" id="animItemComingFromBottom">
+      <div className="form_container" id="animItemFromBottomToTop">
         <button className="close_form_button centered_content" onClick={()=>{setFormDisplay("none")}}>X</button>
         <form className='centered_content'>
           <h1>Create your account</h1>
@@ -312,7 +312,7 @@ switch(formType){
       <div className='box_form centered_content' id="animReverseFade" style={{display: formDisplay}}>
         <Loader loaderState={loaderDisplay}/>
         <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-        <div className="form_container" id="animItemComingFromBottom">
+        <div className="form_container" id="animItemFromBottomToTop">
           <button 
           className="close_form_button centered_content" 
           onClick={()=>{setFormDisplay("none")}}>X</button>
@@ -346,7 +346,7 @@ switch(formType){
     <div className='box_form centered_content' id="animReverseFade" style={{display: formDisplay}}>
       <Loader loaderState={loaderDisplay}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-      <div className="form_container" id="animItemComingFromBottom">
+      <div className="form_container" id="animItemFromBottomToTop">
         <button 
         className="close_form_button centered_content" 
         onClick={()=>{setFormDisplay("none")}}>X</button>

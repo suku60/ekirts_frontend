@@ -3,7 +3,7 @@
 /* -- MOVEMENT */
 
 /* ITEM FROM TOP TO BOTTOM */
-#animItemFallingFromTop {
+#animItemFromTopToBottom {
     animation: fallFromTop .5s normal;
 }
 
@@ -18,7 +18,7 @@
     
 
 /* ITEM FROM BOTTOM TO TOP */
-#animItemComingFromBottom {
+#animItemFromBottomToTop {
     animation: comeFromBottom .5s normal;
 }
 

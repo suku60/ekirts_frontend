@@ -15,10 +15,6 @@ function App() {
       <BrowserRouter>
       <Sidebar
       sidebarData={[
-        {zIndex: "4",
-        name: "Home",
-        path: "/"
-        },
         {zIndex: "3",
         name: "Lobbies",
         path: "/lobbies"

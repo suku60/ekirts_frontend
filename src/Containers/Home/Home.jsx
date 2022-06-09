@@ -27,7 +27,7 @@ const Home = () => {
       <div className="background_cover"></div>
       <Form displayFromParent={formState} formType={formType}/>
       <div className="box_home_container">
-        <h1 className="welcome_text" id="animItemFallingFromTop">EKIRTS GAME</h1>
+        <h1 className="welcome_text" id="animItemFromTopToBottom">EKIRTS GAME</h1>
         {/* <h2 className="welcome_subtext subtext_join centered_content">JOIN THE GAME</h2> */}
         <div className="temporaryBtn centered_content" onClick={()=>{showForm("login")}}>login</div>
         <div className="temporaryBtn btn_register centered_content" onClick={()=>{showForm("register")}}>register</div>

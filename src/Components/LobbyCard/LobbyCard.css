@@ -58,7 +58,7 @@ svg {
 }
 
 .temporary_join_btn { 
-    background-color: whitesmoke;
+    background-color: lightgreen;
     height: 15%;
     width: 100%;
 
@@ -103,6 +103,7 @@ svg {
 
     .box_lobby_card {
         flex-direction: column;
+        height: 15%;
     }
     
     .box_lobby_card:first-child {

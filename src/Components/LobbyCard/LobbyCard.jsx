@@ -12,7 +12,8 @@ const LobbyCard = (props) => {
 
 
   return (
-    <div className="box_lobby_card" key={props.id}>
+    <div className="box_lobby_card" key={props.id} 
+    id="animReverseFade">
       <div className="lobby_card_name centered_content">        
         <div className="lobby_name centered_content">
           {props.lobbyName}

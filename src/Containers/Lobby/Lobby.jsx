@@ -6,7 +6,7 @@ const Lobby = () => {
 
   return (
     <div className="box_basic_container Lobby">
-      <div className="board" id='animItemFallingFromTop'>
+      <div className="board" id='animItemFromBottomToTop'>
       </div>
     </div>
   )
