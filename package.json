@@ -17,6 +17,7 @@
     "redux-localstorage-simple": "^2.5.1",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "https://cryptic-citadel-48065.herokuapp.com", 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

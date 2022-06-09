@@ -1,26 +1,14 @@
 import React, { useEffect, useState }from 'react';
 import Notification from '../../Components/Notification/Notification';
 import LobbyCard from '../../Components/LobbyCard/LobbyCard';
+import { deployURL, developmentURL, localURl } from '../../environments';
 import axios from 'axios';
 
 import './Lobbies.css';
 
 const Lobbies = (props) => {
 
-  const [lobbies, setLobbies] = useState([{
-    id: '1',
-    lobbyName: 'obbt1',
-    playersSize: "3",
-    turnSecondsTimer: '2',
-    gameMaxMinutesTimer: '2',
-  },
-  {
-    id: '2',
-    lobbyName: '2obbt1',
-    playersSize: "23",
-    turnSecondsTimer: '22',
-    gameMaxMinutesTimer: '22',
-  }]);
+  const [lobbies, setLobbies] = useState([]);
 
   const [notificationDisplay, setNotificationDisplay] = useState("none");
   const [customMsg, setCustomMsg] = useState("");
@@ -33,34 +21,34 @@ const Lobbies = (props) => {
  
 
   // Services
-  // const bringAvailableLobbies = async () => {
+  const bringAvailableLobbies = async () => {
 
-  //   let dataResponse;
+    let dataResponse;
 
-  //   try {
-  //       let config = {
-  //         headers: { Authorization: `Bearer ${props?.passport?.token}` }
-  //       };
+    try {
+        let config = {
+          headers: { Authorization: `Bearer ${props?.passport?.token}` }
+        };
 
-  //       let dataResponse = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/findAvailable`, config);
+        let dataResponse = await axios.get(`${developmentURL}/lobbies/findAvailable`, config);
         
-  //       if (dataResponse.data.length !== 0) {
-  //           setLobbies(dataResponse.data)
-  //       }
+        if (dataResponse.data.length !== 0) {
+            setLobbies(dataResponse.data)
+        }
 
-  //   } catch (error) {
+    } catch (error) {
 
-  //     setNotificationDisplay("flex");
-  //       setCustomMsg("Something went wrong, please try again later");
-  //       console.log(error)
-
-
-  //   }
+      setNotificationDisplay("flex");
+        setCustomMsg("Something went wrong, please try again later");
+        console.log(error)
 
 
-  // }
+    }
 
-  // bringAvailableLobbies();
+
+  }
+
+  bringAvailableLobbies();
 
   console.log("lobbies", lobbies);
 

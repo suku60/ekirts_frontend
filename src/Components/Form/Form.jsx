@@ -11,6 +11,7 @@ import Loader from '../Loader/Loader';
 // REDUX
 import { connect } from 'react-redux';
 import { LOGIN } from '../../redux/types';
+import { deployURL, developmentURL, localURl } from '../../environments';
 
 const Form = (props) => {
 
@@ -26,8 +27,8 @@ const Form = (props) => {
 
   const [formType, setFormType] = useState(props.formType || undefined);
   const [formDisplay, setFormDisplay] = useState("none");
+  
   const [notificationDisplay, setNotificationDisplay] = useState("none");
-
   const [customMsg, setCustomMsg] = useState("");
 
   const [loaderDisplay, setLoaderDisplay] = useState("none");
@@ -62,7 +63,14 @@ const Form = (props) => {
       });
     }
 
-  },[props.displayFromParent, props.formType]);
+    if(customMsg !== ""){
+
+      setTimeout(() => {
+        setCustomMsg("");
+      }, 3000);
+    }
+
+  },[props.displayFromParent, props.formType, customMsg]);
 
   // Handler function
 
@@ -115,11 +123,7 @@ const Form = (props) => {
 
       try {
 
-        let config = {
-          headers: { Authorization: `Bearer ${props?.passport?.token}` }
-        };
-
-        loginResult = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/users/login`, body, config)
+        loginResult = await axios.post(`${developmentURL}/users/login`, body)
         console.log("we're getting this from database:", loginResult)
 
         if (loginResult.data.token) {
@@ -143,12 +147,25 @@ const Form = (props) => {
         }
       } catch (loginError) {
 
-        setCustomMsg("There has been a problem with the server, please try again later");
+        if(loginError.response.status === 401){
+        
+          setCustomMsg("Wrong username or password");
+        
+        }else{
 
+          setCustomMsg("There has been a problem with the server, please try again later");
+          
+        }
+         
         setTimeout(() => {
           setLoaderDisplay("none");
-         }, 1000);
+        }, 500);
 
+        setTimeout(() => {
+          setCustomMsg("");
+        }, 3000);
+
+          
         console.log("Server error", loginError)
       }
     }

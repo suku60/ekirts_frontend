@@ -9,9 +9,17 @@ const Notification = (props) => {
   });
 
   useEffect(() => {
+
+    console.log(props.customMsg)
+
     if(props.customMsg && props.notificationDisplay === "none"){
       setNotificationDisplay("flex");
     }
+
+    if(props.customMsg === ""){
+      setNotificationDisplay("none");
+    }
+
   },[props.customMsg]);
 
   const hideNotification = () => {
