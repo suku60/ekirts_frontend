@@ -16,7 +16,7 @@ const Loader = (props) => {
 
   },[props?.loaderState]);
 
-  console.log("display, ", loaderDisplay);
+  // console.log("display, ", loaderDisplay);
 
   return (
     <div className="box_loader centered_content" id="animReverseFade" style={{display: loaderDisplay}}>

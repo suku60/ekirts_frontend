@@ -11,7 +11,7 @@ import Loader from '../Loader/Loader';
 // REDUX
 import { connect } from 'react-redux';
 import { LOGIN } from '../../redux/types';
-import { deployURL, developmentURL, localURl } from '../../environments';
+import { deployURL, mainURL, localURl } from '../../environments';
 
 const Form = (props) => {
 
@@ -113,13 +113,12 @@ const Form = (props) => {
 
     if (!validationsError && !wrongPasswordError && !passwordLenghtError) {
       
-      console.log("entro en la segynda?")
       setLoaderDisplay("flex")
 
       try {
 
-        loginResult = await axios.post(`${developmentURL}/users/login`, body)
-        console.log("we're getting this from database:", loginResult)
+        loginResult = await axios.post(`${mainURL}/users/login`, body)
+        // console.log("we're getting this from database:", loginResult)
 
         if (loginResult.data.token) {
           setCustomMsg(`Welcome to the family ${loginResult.data.user.username}!
@@ -161,7 +160,6 @@ const Form = (props) => {
         }, 3000);
 
           
-        console.log("Server error", loginError)
       }
     }
 
@@ -205,13 +203,11 @@ const Form = (props) => {
 
     if (!validationsError && !wrongPasswordError && !passwordLenghtError) {
       
-      console.log("entro en la segynda?")
       setLoaderDisplay("flex")
 
       try {
 
-        registerResult = await axios.post(`${developmentURL}/users/create`, body)
-        console.log("we're getting this from database:", registerResult)
+        registerResult = await axios.post(`${mainURL}/users/create`, body)
 
         if(!registerResult?.data?.user){
 
@@ -248,14 +244,11 @@ const Form = (props) => {
           setCustomMsg("");
         }, 3000);
 
-        console.log("Server error", registerError)
       }
     }
 
   }
 
-  console.log("userData", userData)
-  
   // this has to be refactored soon 
 switch(formType){
 

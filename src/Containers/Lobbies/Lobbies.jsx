@@ -1,7 +1,7 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
 
-import { developmentURL } from '../../environments';
+import { mainURL } from '../../environments';
 
 import Notification from '../../Components/Notification/Notification';
 import LobbyCard from '../../Components/LobbyCard/LobbyCard';
@@ -18,12 +18,12 @@ const Lobbies = (props) => {
   const [lobbies, setLobbies] = useState([]);
 
   const [notificationDisplay, setNotificationDisplay] = useState("none");
-  const [customMsg, setCustomMsg] = useState("");
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
 
     if(!lobbies.length){
-    bringAvailableLobbies();
+    bringLobbies();
     }
 
     if(!props.passport?.token){
@@ -37,32 +37,37 @@ const Lobbies = (props) => {
  
 
   // Services
-  const bringAvailableLobbies = async () => {
+  const bringLobbies = async (type) => {
 
-    let dataResponse;
+    if(!type){
+      type = "Available"
+    }
+
+    console.log(type)
+
+    let lobbiesResponse;
 
     try {
+
         let config = {
           headers: { Authorization: `Bearer ${props?.passport?.token}` }
         };
 
-        console.log(config)
+        console.log(`${mainURL}/lobbies/find${type}`)
 
-        let dataResponse = await axios.get(`${developmentURL}/lobbies/findAvailable`, config);
+        let lobbiesResponse = await axios.get(`${mainURL}/lobbies/find${type}`, config);
         
-        console.log(dataResponse);
+        console.log(lobbiesResponse);
 
-        if (dataResponse.data.length !== 0) {
-            setLobbies(dataResponse.data)
+        if (lobbiesResponse.data.length !== 0) {
+            setLobbies(lobbiesResponse.data)
         }
 
     } catch (error) {
 
-      setCustomMsg("Something went wrong, please try again later");
-      setTimeout(() => {
-        // setCustomMsg("");
-      }, 2000);
-      console.log(error)
+      setMsg("Something went wrong, please try again later");
+     
+      // // console.log(error)
 
 
     }
@@ -71,17 +76,17 @@ const Lobbies = (props) => {
   }
 
 
-  console.log("lobbies", lobbies);
+  // // console.log("lobbies", lobbies);
 
   return (
-    <div className="box_basic_container Lobbies">
-      <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
+    <div className="box_basic_container box_bg Lobbies">
+      <Notification notificationDisplay={notificationDisplay} customMsg={msg}/>
       <div className="board"  id='animItemFromTopToBottom'>
         
       { lobbies.map(lobbyObject => {
         return(
           <LobbyCard
-          id={lobbyObject.id}
+          key={lobbyObject.id}
           lobbyName={lobbyObject.lobbyName}
           playersSize={lobbyObject.playersSize}
           turnSecondsTimer={lobbyObject.turnSecondsTimer}

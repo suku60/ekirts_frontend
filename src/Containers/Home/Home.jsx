@@ -1,12 +1,29 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { connect } from "react-redux";
+
 import './Home.css';
 
 import Form from '../../Components/Form/Form';
 
-const Home = () => {
+const Home = (props) => {
+
+  let navigate = useNavigate();
 
   const [formState, setFormState] = useState("none");
   const [formType, setFormType] = useState(undefined);
+
+  useEffect(() => {
+
+    if(props.passport?.token){
+      navigate("/lobbies");
+  }
+
+  });
+
+  useEffect(() => {
+  },[]);
+ 
 
   const showForm = (loginOrRegisterForm) => {
 
@@ -22,9 +39,7 @@ const Home = () => {
   }
 
   return (
-    <div className="box_basic_container home" id='animReverseFade'>
-      <div className="background_sides"></div>
-      <div className="background_cover"></div>
+    <div className="box_basic_container box_bg home" id='animReverseFade'>
       <Form displayFromParent={formState} formType={formType}/>
       <div className="box_home_container">
         <h1 className="welcome_text" id="animItemFromTopToBottom">EKIRTS GAME</h1>
@@ -36,4 +51,6 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default connect((state) => ({
+  passport: state.passport
+}))(Home);

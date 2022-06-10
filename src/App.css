@@ -11,7 +11,6 @@
 
 /* POSITIONING */
 /* centered children */
-
 .centered_content {
   
   display: flex;
@@ -20,7 +19,7 @@
   align-items: center;
 
 }
-
+/* content placed on the top left */
 .left_content {
   
   display: flex;
@@ -30,20 +29,11 @@
 
   padding: 0%;
   box-sizing: border-box;
-
 }
 
 /* BOXES */
-
+/* containers */
 .box_basic_container {
-
-  background:
-  radial-gradient(white 15%, transparent 16%) 0 0,
-  radial-gradient(white 15%, transparent 16%) 8px 8px,
-  radial-gradient(rgba(0, 0, 0, 0.3) 15%, transparent 20%) 0 1px,
-  radial-gradient(rgba(0, 0, 0, 0.3) 15%, transparent 20%) 8px 9px;
-  background-color:#d6d6d6;
-  background-size:16px 16px;
   
   display: flex;
   flex-direction: column;
@@ -55,6 +45,7 @@
 
 }
 
+/* container inside */
 .board {
     background:
     radial-gradient(hsl(0, 0%, 100%) 15%, transparent 16%) 0 0,
@@ -74,6 +65,23 @@
     scrollbar-color: transparent transparent;
     scrollbar-base-color: transparent;
 }
+
+/* BACKGROUNDS */
+.box_bg {
+    background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image:  linear-gradient(330deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), 
+                     linear-gradient(50deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), 
+                     linear-gradient(266deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), 
+                     linear-gradient(10deg, #444cf7 12%, transparent 12.5%, transparent 87%, #444cf7 87.5%, #444cf7), 
+                     linear-gradient(30deg, #444cf777 25%, transparent 25.5%, transparent 75%, #444cf777 75%, #444cf777), 
+                     linear-gradient(60deg, #444cf777 25%, transparent 25.5%, transparent 75%, #444cf777 75%, #444cf777);
+  background-size: 170px 280px;
+  background-position: 0 0, 0 0, 20px 32px, 20px 36px, 0 1, 20px 20px;
+
+}
+
+
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 

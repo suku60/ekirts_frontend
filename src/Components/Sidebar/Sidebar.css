@@ -53,6 +53,10 @@ ul li:hover {
 
 }
 
+.logout_text {
+    z-index: 1;
+}
+
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 
 @media screen and (max-width: 1200px) {

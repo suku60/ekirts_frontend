@@ -78,6 +78,21 @@
     }
 }
 
+/* BACKGROUNDS */
+
+#animSlowTranslation{
+    animation: slowTranslation 1.5s infinite linear alternate;
+}
+
+@keyframes slowTranslation {
+    0% {
+        transform: translate(-10%);
+    }
+    100% {
+        transform: translate(10%);
+    }
+}
+    
 
 
 
