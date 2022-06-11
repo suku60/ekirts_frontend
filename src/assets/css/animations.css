@@ -1,6 +1,6 @@
 /* HERE WE'RE DOING THE BASIC AND COMMON CSS ANIMATIONS */
 
-/* -- MOVEMENT */
+/* --- MOVEMENT */
 
 /* ITEM FROM TOP TO BOTTOM */
 #animItemFromTopToBottom {
@@ -45,7 +45,7 @@
     }
 }
 
-/* -- OPACITY */
+/* --- OPACITY */
 
 /* TRANSITION FROM 0 OPACITY TO 1 */
 #animReverseFade {
@@ -59,6 +59,10 @@
         opacity: 1;
     }
 }
+
+/* FLICKER */
+
+
 
 /* CONSTANT CHANGE OF OPACITY FROM 0 TO 1 */
 #animConstantOpacityChange {
@@ -78,7 +82,7 @@
     }
 }
 
-/* BACKGROUNDS */
+/* --- BACKGROUNDS */
 
 #animSlowTranslation{
     animation: slowTranslation 1.5s infinite linear alternate;
@@ -112,7 +116,7 @@
 
 
 
-/* ROTATIONS */
+/* --- ROTATIONS */
 #animLoader {
     animation: loaderRotation 200s reverse linear infinite;
 }
@@ -127,7 +131,7 @@
 }
 
 
-/* SOME ANIMATIONS ON SMALL DEVICES WILL BE OFF TEMPORARY */
+/* --- SOME ANIMATIONS ON SMALL DEVICES WILL BE OFF TEMPORARY */
 @media screen and (max-width: 800px) {
 
     #animAbsoluteBg{

@@ -6,6 +6,7 @@ import './Home.css';
 
 import Form from '../../Components/Form/Form';
 import AbsoluteBackground from '../../Components/AbsoluteBackground/AbsoluteBackground';
+import GameTitle from '../../Components/GameTitle/GameTitle';
 
 const Home = (props) => {
 
@@ -56,7 +57,9 @@ const Home = (props) => {
       <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Form displayFromParent={formState} formType={formType}/>
       <div className="box_home_container">
-        <h1 className="welcome_text" id="animItemFromTopToBottom">EKIRTS GAME</h1>
+        <h1 className="welcome_text" id="animItemFromTopToBottom">
+          </h1>
+          <GameTitle/>
         {/* <h2 className="welcome_subtext subtext_join centered_content">JOIN THE GAME</h2> */}
         <div className="button centered_content" onClick={()=>{showForm("login")}}>login</div>
         <div className="button register_btn centered_content" onClick={()=>{showForm("register")}}>register</div>

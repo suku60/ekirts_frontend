@@ -10,6 +10,13 @@
 /* SOURCE CODE FONT */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* NEON TEXT EFFECT  */
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+/* POPPINS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+
 :root {
 
   --transition-1: .2s;
@@ -27,6 +34,9 @@
   --card-height-Max: 38vw;
   --card-height-1200px-br: 45vw;
   --card-height-600px-br: 100vw;
+
+  --neon-text-color: hsl(16, 99%, 55%);
+  --neon-border-color: hsl(208, 100%, 53%);
 }
 
 
