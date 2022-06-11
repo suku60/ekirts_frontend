@@ -101,12 +101,12 @@
 /* BACKGROUNDS */
 .box_bg {
   /* background-color: hsl(199, 50%, 18%); */
-  background-image:  linear-gradient(330deg, hsl(248, 28%, 23%) 12%, transparent 12.5%, transparent 87%, hsl(248, 28%, 23%) 87.5%, hsl(248, 28%, 23%)), 
-                     linear-gradient(50deg, hsl(248, 28%, 23%) 12%, transparent 12.5%, transparent 87%, hsl(248, 28%, 23%) 87.5%, hsl(248, 28%, 23%)), 
-                     linear-gradient(266deg, hsl(248, 28%, 23%) 12%, transparent 12.5%, transparent 87%, #cc1c4f 87.5%, hsl(248, 28%, 23%)), 
-                     linear-gradient(10deg, hsl(248, 28%, 23%) 12%, transparent 12.5%, transparent 87%, #cc1c4f  87.5%, hsl(248, 28%, 23%)), 
-                     linear-gradient(30deg, #5f2b6777 25%, transparent 25.5%, transparent 75%, hsl(248, 28%, 23%) 75%, hsl(248, 28%, 23%)), 
-                     linear-gradient(60deg, #cb126b77 25%, transparent 25.5%, transparent 75%, hsl(248, 28%, 23%) 75%, #f0ca8e77 );
+  background-image:  linear-gradient(330deg, var(--neon-color-dark) 12%, transparent 12.5%, transparent 87%, var(--neon-color-dark) 87.5%, var(--neon-color-dark)), 
+                     linear-gradient(50deg, var(--neon-color-dark) 12%, transparent 12.5%, transparent 87%, var(--neon-color-dark) 87.5%, var(--neon-color-dark)), 
+                     linear-gradient(266deg, var(--neon-color-dark) 12%, transparent 12.5%, transparent 87%, var(--neon-color-rose) 87.5%, var(--neon-color-dark)), 
+                     linear-gradient(10deg, var(--neon-color-dark) 12%, transparent 12.5%, transparent 87%, var(--neon-color-rose)  87.5%, var(--neon-color-dark)), 
+                     linear-gradient(30deg, var(--neon-color-dark-2) 25%, transparent 25.5%, transparent 75%, var(--neon-color-dark) 75%, var(--neon-color-dark)), 
+                     linear-gradient(60deg, var(--neon-color-rose-2) 25%, transparent 25.5%, transparent 75%, var(--neon-color-dark) 75%, var(--neon-color-yellow));
   background-size: 590px 520px;
   /* background-position: 20 0, 0 0, 20px 32px, 20px 36px, 0 1, 20px 20px; */
   background-position: 33%;

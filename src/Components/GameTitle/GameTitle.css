@@ -36,11 +36,12 @@
 
   opacity: 0;
   cursor: pointer;
-  
-  height: 10vh;
-  width: 10vh;
 
   z-index: 10;
+  cursor: pointer;
+
+  transform: scale(6);
+
 }
 
 .box_game_title input[type="checkbox"]:checked ~ div {
@@ -53,15 +54,16 @@
 
 .box_game_title div {
   background: #18191f;
-  color: #555;
+  color: #18191f;
 
   position: relative;
 
   height: 9vh;
   width: 9vh;
   
+  cursor: default;
+
   font-size: 5em;
-  cursor: pointer;
   margin: -.18em;
 
   border-radius: 1rem;
