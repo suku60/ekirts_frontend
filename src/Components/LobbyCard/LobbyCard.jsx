@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './LobbyCard.css';
 
 import {ReactComponent as PrivateSvg} from '../../assets/svg/private.svg'
+import {ReactComponent as PublicSvg} from '../../assets/svg/public.svg'
+import {ReactComponent as ActiveSvg} from '../../assets/svg/active.svg'
 import {ReactComponent as PlayersSvg} from '../../assets/svg/players.svg'
 import {ReactComponent as TimerSvg} from '../../assets/svg/clock.svg'
 import {ReactComponent as JoinBtnSvg} from '../../assets/svg/join.svg'
@@ -9,7 +11,11 @@ import {ReactComponent as EyeSvg} from '../../assets/svg/eye.svg'
 
 const LobbyCard = (props) => {
 
+// console.log(props)
 
+  const [isPrivate, setIsPrivate] = useState(props.isPrivate);
+  const [isFull, setIsFull] = useState(props.isFull);
+  const [isActive, setIsActive] = useState(props.isActive);
 
   return (
     <div className="box_lobby_card  italic_text" 
@@ -36,9 +42,9 @@ const LobbyCard = (props) => {
           {props.turnSecondsTimer}s | {props.gameMaxMinutesTimer}min
         </div>
         <div className="lobby_data status centered_content">
-          status
-          acive/inactive
-          public/private
+          { isPrivate ? <PrivateSvg fill="red" /> : <PublicSvg fill="green"/> }
+          { isFull ? <PlayersSvg fill="red"/> : <PlayersSvg fill="green"/> }
+          { isActive ? <ActiveSvg fill="red"/> : <ActiveSvg fill="green"/> }
         </div>
         <div className="lobby_data centered_content data_watch">
           <EyeSvg/>

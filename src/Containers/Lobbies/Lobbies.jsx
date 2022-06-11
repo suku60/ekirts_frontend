@@ -60,7 +60,6 @@ const Lobbies = (props) => {
       type = "Available"
     }
 
-    console.log(type)
 
     let lobbiesResponse;
 
@@ -70,11 +69,9 @@ const Lobbies = (props) => {
           headers: { Authorization: `Bearer ${props?.passport?.token}` }
         };
 
-        console.log(`${mainURL}/lobbies/find${type}`)
 
         let lobbiesResponse = await axios.get(`${mainURL}/lobbies/find${type}`, config);
         
-        console.log(lobbiesResponse);
 
         if (lobbiesResponse.data.length !== 0) {
             setLobbies(lobbiesResponse.data)
@@ -93,8 +90,6 @@ const Lobbies = (props) => {
   }
 
 
-  // // console.log("lobbies", lobbies);
-
   return (
     <div className="box_basic_container Lobbies">
       <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
@@ -104,6 +99,7 @@ const Lobbies = (props) => {
      <div className="board"  id='animItemFromTopToBottom'>
         
       { lobbies.map(lobbyObject => {
+        // console.log("lobbyObject", lobbyObject);
         return(
           <LobbyCard
           key={lobbyObject.id}
@@ -111,6 +107,9 @@ const Lobbies = (props) => {
           playersSize={lobbyObject.playersSize}
           turnSecondsTimer={lobbyObject.turnSecondsTimer}
           gameMaxMinutesTimer={lobbyObject.gameMaxMinutesTimer}
+          isPrivate={lobbyObject.privateGame}
+          isActive={lobbyObject.inactive}
+          isFull={lobbyObject.full}
           />
         )
       })}
