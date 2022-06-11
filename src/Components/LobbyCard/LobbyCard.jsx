@@ -12,10 +12,10 @@ const LobbyCard = (props) => {
 
 
   return (
-    <div className="box_lobby_card" 
+    <div className="box_lobby_card  italic_text" 
     id="animReverseFade">
       <div className="lobby_card_name centered_content">        
-        <div className="lobby_name centered_content">
+        <div className="lobby_name">
           {props.lobbyName}
         </div> 
         <div className="temporary_join_btn centered_content">
@@ -23,12 +23,15 @@ const LobbyCard = (props) => {
         </div> 
       </div>
       <div className="lobby_card_data centered_content">
-        <div className="lobby_data centered_content">
+        <div className="lobby_data data_size_timer  centered_content ">
           <PlayersSvg/>
-          {props.playersSize}
+          <p>
+            {props.playersSize}
+            
+            </p>
         </div>
        
-        <div className="lobby_data centered_content">
+        <div className="lobby_data centered_content data_size_timer">
           <TimerSvg/>
           {props.turnSecondsTimer}s | {props.gameMaxMinutesTimer}min
         </div>
@@ -37,9 +40,8 @@ const LobbyCard = (props) => {
           acive/inactive
           public/private
         </div>
-        <div className="lobby_data centered_content">
+        <div className="lobby_data centered_content data_watch">
           <EyeSvg/>
-          watch
         </div>
       </div>
     </div>

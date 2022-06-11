@@ -57,6 +57,13 @@ ul li:hover {
 
 }
 
+ul li:last-child:hover {
+
+    color: var(--neon-color-rose);
+    background-color: var(--neon-color-dark);
+
+}
+
 .logout_text {
     z-index: 1;
 }
@@ -100,7 +107,8 @@ ul li:hover {
     
     margin-inline: .8em;
 
-    border-radius: 2rem;
+    border-radius: 1.5rem 1.5rem 0rem 0rem;
+    padding-inline: .4em;
   }
 
   ul li:hover {

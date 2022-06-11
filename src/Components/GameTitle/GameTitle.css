@@ -20,6 +20,8 @@
 }
 
 .box_game_title li {
+  background-color: transparent;
+  
   list-style: none;
   margin: 0%;
 }

@@ -36,9 +36,14 @@
   --card-height-600px-br: 100vw;
 
   --neon-color-red: hsl(16, 99%, 55%);
+  
   --neon-color-blue: hsl(208, 100%, 53%);
+  --neon-color-blue-2: hsl(208, 90%, 23%);
+  --neon-color-blue-3: hsl(208, 90%, 30%);
+
   --neon-color-yellow-0: hsl(37, 77%, 75%);
   --neon-color-yellow: hsla(37, 77%, 75%, 0.467);
+  
   --neon-color-rose: hsl(343, 76%, 45%) ;
   --neon-color-rose-2: hsla(331, 84%, 43%, 0.467);
 

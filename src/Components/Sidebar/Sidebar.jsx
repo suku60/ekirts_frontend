@@ -33,7 +33,7 @@ const Sidebar = (props) => {
     }
 
   return (
-            <ul style={{display: sidebarDisplay}} 
+            <ul className=" italic_text" style={{display: sidebarDisplay}} 
             id="animItemFromTopToBottom">
             { props.sidebarData.map(sidebar => {
               return ( 

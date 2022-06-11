@@ -4,12 +4,16 @@ svg {
     width: 100%;
     margin: 15%;
 }
+
 .box_lobby_card {
-    background-color: hsl(0, 0%, 73%, .8);
-    
+    /* background-color: transparent; */
+    background-color: hsl(343, 100%, 88%, .9);
+
+    border-radius: 0rem 1.7rem 1.7rem 1.7rem;
+
     height: 20%;
     width: 97%;
-    
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -17,13 +21,16 @@ svg {
 
     margin-block: .5em;
     margin-left: 2.5%;
+
+    box-shadow: 1px 2px 4px var(--neon-color-rose);
 }
 
 .box_lobby_card:first-child {
     margin-top: 5%;
 }
 
-.lobby_card_name, .lobby_card_data {
+.lobby_card_name,
+.lobby_card_data {
 
     height: 100%;
     margin-inline: .5em;
@@ -31,17 +38,21 @@ svg {
 }
 
 .lobby_card_name {
-    background-color: green;
+    background-color: transparent;
+
+    color: whitesmoke;
+    text-shadow: 1px 1px 3px hsl(0, 0%, 0%, .3);
 
     width: 33%;
 }
 
 .lobby_card_data {
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+    background-color: transparent;
 
     width: 58%;
 
-    
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,15 +61,33 @@ svg {
 }
 
 .lobby_name {
-    background-color: blue;
+    /* background-color: blue; */
+    background-color: transparent;
 
     height: 15%;
     width: 100%;
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4em;
+    letter-spacing: .1rem;
+    overflow: hidden;
+
+    padding-left: 1%;
+
+    color: var(--neon-color-blue-2);
+    opacity: .8;
+
+
 }
 
-.temporary_join_btn { 
-    background-color: lightgreen;
+.temporary_join_btn {
+    /* background-color: lightgreen; */
+    background-color: transparent;
+
     height: 15%;
     width: 100%;
 
@@ -70,17 +99,19 @@ svg {
 
 .temporary_join_btn:hover {
     background-color: black;
+    background: linear-gradient(90deg, transparent, var(--neon-color-dark-0), transparent);
     color: whitesmoke;
 
     transition: .2s;
 }
 
 .lobby_data {
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-color: transparent;
 
     overflow: hidden;
 
-    height: 95%;
+    height: 75%;
     width: 25%;
 
     margin-inline: 1%;
@@ -91,14 +122,68 @@ svg {
     width: 15%;
 }
 
+.data_size_timer svg {
+
+    fill: var(--neon-color-dark-0);
+    min-height: 2rem;
+}
+
+.data_watch {
+    background-color: var(--neon-color-blue-2);
+    fill: whitesmoke;
+
+    box-shadow: 2px 1px 6px var(--neon-color-rose);
+
+    border-radius: 5rem;
+
+    max-height: 50%;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.data_watch:hover {
+
+    background-color: var(--neon-color-blue-3);
+    box-shadow: none;
+
+    transition: .3s;
+}
+
 .status {
     width: 10%;
 }
+
+
+/* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 1200px) {
+    .data_size_timer {
+
+        fill: var(--neon-color-dark-0);
+
+        flex-direction: row-reverse;
+        min-height: 0rem;
+
+        max-height: 40%;
+
+        padding-left: 20%;
+    }
+
+    .data_size_timer svg:last-child {
+        margin-left: 0%;
+
+    }
+
+    .data_size_timer svg {
+        margin-left: -15%;
+    }
+
+    .data_watch {
+        max-height: 60%;
+    }
+}
+
 /* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
-
-
-
-
 @media screen and (max-width: 800px) {
     svg {
         margin: 10%;
@@ -108,24 +193,31 @@ svg {
         flex-direction: column;
         height: 15%;
     }
-    
+
     .box_lobby_card:first-child {
         margin-top: 2%;
     }
-    
-    .lobby_card_name, .lobby_card_data {
-    
+
+    .lobby_card_name,
+    .lobby_card_data {
+
         width: 100%;
         margin-inline: .5em;
-    
+
     }
-    
+
     .lobby_card_name {
+        background: linear-gradient(to right, transparent, var(--neon-color-dark-2) 5%, var(--neon-color-dark-0), transparent);
+        background-color: var(--neon-color-dark);
+
+        color: var(--neon-color-blue);
+
+
         height: 20%;
         flex-direction: row;
         align-items: flex-start;
     }
-    
+
     .lobby_card_data {
         height: 80%;
     }
@@ -133,23 +225,41 @@ svg {
     .lobby_name {
         height: 100%;
         width: 70%;
-    
+
+        font-size: 1em;
+        color: var(--neon-color-blue);
+
+
+        align-items: flex-start;
+        justify-content: space-between;
+
     }
 
     .lobby_data {
-        width: 40%;
+        width: 30%;
+        height: 100%;
+
+    }
+
+    .data_size_timer {
+        flex-direction: row-reverse;
+        max-height: 60%;
+        min-height: none;
+
+
+        padding-inline: .5em;
     }
 
     .status {
         width: 15%
     }
 
-    .temporary_join_btn { 
+    .temporary_join_btn {
         height: 100%;
         width: 30%;
-    
+
         cursor: pointer;
-    
+
     }
 }
 
@@ -159,6 +269,10 @@ svg {
     .box_lobby_card:last-child {
         margin-bottom: 20%;
     }
+
+    .lobby_name {
+        font-size: .7em;
+    }
 }
 
 /* 360PX WIDTH SCREEN ADAPTIVE MEDIA */
@@ -167,10 +281,10 @@ svg {
     .box_lobby_card:last-child {
         margin-bottom: 25%;
     }
-  }
+}
 
-  @media screen and (max-width: 250px) {
+@media screen and (max-width: 250px) {
     .box_lobby_card:last-child {
         margin-bottom: 45%;
     }
-  }
+}

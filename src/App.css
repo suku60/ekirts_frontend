@@ -115,6 +115,14 @@
   background-position: 33%;
 }
 
+/* TEXT */
+.italic_text {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 100;
+  letter-spacing: .2em;
+}
 
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
