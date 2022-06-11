@@ -1,13 +1,20 @@
 .box_notification {
 
-    background-color: rgba(119, 36, 36, 1);
+    background-color: var(--neon-color-rose);
 
     color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: 100;
+    letter-spacing: -.05em;
 
     position: absolute;
     z-index: 11;
     right: 0%;
     top: 70%;
+
+    border-radius: 5em 0% 0% 5em;
 
     width: fit-content;
     height: fit-content;
@@ -30,11 +37,24 @@
     z-index: 12;
 
     background-image: url("../../assets/svg/CloseNotification.svg");
+    background-size: cover;
+    background-color: transparent;
+    opacity: .5;
+
+    overflow: visible;
 
     height: 100%;
-    width: 5%;
+    width: 10%;
 
+    padding-right: 1%;
     cursor: pointer;
+}
+
+/* NEE TO FIX THIS LATER */
+.notification_close_button:hover {
+    background-color: whitesmoke;
+    border-radius: 5em;
+
 }
 
 /* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
@@ -54,6 +74,7 @@
     .box_notification {
 
         padding-left: 16%;
+        top: 10%;
 
     }
 

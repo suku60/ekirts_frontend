@@ -62,12 +62,12 @@ const Form = (props) => {
       });
     }
 
-    if(customMsg !== ""){
+    // if(customMsg !== ""){
 
-      setTimeout(() => {
-        setCustomMsg("");
-      }, 3000);
-    }
+    //   setTimeout(() => {
+    //     setCustomMsg("");
+    //   }, 3000);
+    // }
 
   },[props.displayFromParent, props.formType, customMsg]);
 
@@ -293,7 +293,7 @@ switch(formType){
           required/>
           <p>By clicking Register, you'll agree you are over 18 and our <a href="https://blank.page/">Privacy Policy</a>.</p>
           <div 
-            className='form_button' 
+            className='form_button centered_children' 
             onClick={() => Register()}>Register</div>
         </form>
       </div>
@@ -324,7 +324,7 @@ switch(formType){
             placeholder="password" 
             required/>
             <div 
-            className='form_button' 
+            className='form_button centered_children' 
             onClick={() => Login()}>Login</div>
           </form>
         </div>
@@ -371,7 +371,7 @@ switch(formType){
           required/>
           <p>By clicking Register, you'll agree you are over 18 and our <a href="https://blank.page/">Privacy Policy</a>.</p>
           <button 
-          className='form_button' 
+          className='form_button centered_children' 
           onClick={()=>{}}>Register</button>
         </form>
       </div>
