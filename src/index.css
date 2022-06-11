@@ -4,6 +4,12 @@
 /* Loader font & small details */
 @import url('https://fonts.googleapis.com/css2?family=Mina&display=swap');
 
+/* VT32 FONT */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* SOURCE CODE FONT */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 :root {
 
   --transition-1: .2s;

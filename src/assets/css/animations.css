@@ -92,6 +92,19 @@
         transform: translate(10%);
     }
 }
+
+#animAbsoluteBg{
+    animation: bgMovement 7.5s infinite linear;
+}
+
+@keyframes bgMovement {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
     
 
 

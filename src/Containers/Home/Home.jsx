@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import './Home.css';
 
 import Form from '../../Components/Form/Form';
+import AbsoluteBackground from '../../Components/AbsoluteBackground/AbsoluteBackground';
 
 const Home = (props) => {
 
@@ -12,6 +13,8 @@ const Home = (props) => {
 
   const [formState, setFormState] = useState("none");
   const [formType, setFormType] = useState(undefined);
+
+  const [bgAnimationStateHome, setBgAnimationStateHome] = useState(true);
 
   useEffect(() => {
 
@@ -38,14 +41,27 @@ const Home = (props) => {
     }
   }
 
+  const backgroundAnimState = () => {
+
+    if(bgAnimationStateHome){
+      setBgAnimationStateHome(false);
+    }else{
+      setBgAnimationStateHome(true);
+    }
+
+  }
+  
   return (
-    <div className="box_basic_container box_bg home" id='animReverseFade'>
+    <div className="box_basic_container home" id='animReverseFade'>
+      <AbsoluteBackground bgAnimationState={bgAnimationStateHome}/>
       <Form displayFromParent={formState} formType={formType}/>
       <div className="box_home_container">
         <h1 className="welcome_text" id="animItemFromTopToBottom">EKIRTS GAME</h1>
         {/* <h2 className="welcome_subtext subtext_join centered_content">JOIN THE GAME</h2> */}
-        <div className="temporaryBtn centered_content" onClick={()=>{showForm("login")}}>login</div>
-        <div className="temporaryBtn btn_register centered_content" onClick={()=>{showForm("register")}}>register</div>
+        <div className="button centered_content" onClick={()=>{showForm("login")}}>login</div>
+        <div className="button register_btn centered_content" onClick={()=>{showForm("register")}}>register</div>
+        <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>turn anmations off</div>
+
       </div>
     </div>
   )

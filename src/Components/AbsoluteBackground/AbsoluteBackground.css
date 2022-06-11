@@ -1,0 +1,6 @@
+.box_absolute_bg {
+    position: absolute;
+
+    height: 300%;
+    width: 300%;
+}

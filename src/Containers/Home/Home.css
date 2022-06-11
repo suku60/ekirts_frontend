@@ -11,29 +11,6 @@ h2 {
     z-index: 3;
 }
 
-.background_sides {
-    background: linear-gradient(90deg, hsl(157, 100%, 0%) 10%, transparent, transparent, transparent, hsl(157, 100%, 0%) 90%);
-
-    position: absolute;
-    z-index: 4;
-
-    height: 100%;
-    width: 100%;
-}
-
-.background_cover {
-    height: 100%;
-    width: 100%;
-
-    background: linear-gradient(transparent 1%, hsl(157, 100%, 0%, .8) 95%);
-
-    /* Property to erase whitespace between top and background */
-    background-position-y: top;
-
-    position: absolute;
-    z-index: 4;
-}
-
 .box_home_container {
     width: 100%;
     height: 100%;
@@ -48,14 +25,19 @@ h2 {
 
 .welcome_text {
 
-    text-align: center;
-    font-size: 3em;
-    font-family: 'Press Start 2P', cursive;
-    
+    color: white;
 
+    text-align: center;
+    font-size: 5em;
+    font-family: 'Source Code Pro', monospace;
+    letter-spacing: -.1em;
+    font-weight: 800;
+
+    padding: 0%;
+    margin: 0%;
+    
     /* position: absolçute; */
     z-index: 6;
-
 
 }
 
@@ -79,7 +61,7 @@ h2 {
 }
 
 
-.temporaryBtn {
+.button {
     background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
 
 
@@ -97,20 +79,38 @@ h2 {
     transition: .2s;
 }
 
-.temporaryBtn:hover {
+.button:hover {
     background-color: #acacac;
     width: 100%;
 
     transition: .2s;
 }
 
-.btn_register {
+.register_btn {
 
     top: 50%;
 
     z-index: 7;
 
     margin-bottom: 25%;
+}
+
+.animation_btn {
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
+
+    font-family: 'Press Start 2P', cursive;
+
+    height: 2rem;
+    width: 25rem;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    position: absolute;
+    right: 0;
+    bottom: 2%;
+
 }
 
 /* 1500PX WIDTH SCREEN ADAPTIVE MEDIA */
@@ -135,14 +135,33 @@ h2 {
 
     }
 
-    .btn_register {
+    .register_btn {
         margin-bottom: 25%;
     
     }
 
 
-    .temporaryBtn {
+    .button {
         height: 2rem;  
+    }
+
+    .animation_btn {
+        background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
+    
+        font-family: 'Press Start 2P', cursive;
+        font-size: small;
+    
+        height: 1rem;
+        width: 10rem;
+    
+        cursor: pointer;
+    
+        transition: .2s;
+    
+        position: absolute;
+        right: 0;
+        bottom: 90%;
+    
     }
 }
 
