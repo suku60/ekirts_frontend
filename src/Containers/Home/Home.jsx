@@ -17,6 +17,8 @@ const Home = (props) => {
 
   const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
 
+  const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
+
   useEffect(() => {
 
     if(props.passport?.token){
@@ -46,8 +48,10 @@ const Home = (props) => {
 
     if(bgAnimationStateContainer){
       setBgAnimationStateContainer(false);
+      setAnimationTextIndicator("off");
     }else{
       setBgAnimationStateContainer(true);
+      setAnimationTextIndicator("on");
     }
 
   }
@@ -63,7 +67,7 @@ const Home = (props) => {
         {/* <h2 className="welcome_subtext subtext_join centered_content">JOIN THE GAME</h2> */}
         <div className="button centered_content" onClick={()=>{showForm("login")}}>login</div>
         <div className="button register_btn centered_content" onClick={()=>{showForm("register")}}>register</div>
-        <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>turn anmations off</div>
+        <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>animations {animationTextIndicator}</div>
 
       </div>
     </div>

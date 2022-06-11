@@ -41,8 +41,10 @@
   --neon-color-yellow: hsla(37, 77%, 75%, 0.467);
   --neon-color-rose: hsl(343, 76%, 45%) ;
   --neon-color-rose-2: hsla(331, 84%, 43%, 0.467);
+  --neon-color-dark-0: hsl(248, 28%, 13%);
   --neon-color-dark: hsl(248, 28%, 23%);
   --neon-color-dark-2: hsla(292, 41%, 29%, 0.467);
+  --neon-color-dark-3: hsla(343, 41%, 29%, .667);
 }
 
 

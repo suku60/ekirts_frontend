@@ -74,11 +74,17 @@
 /* BUTTONS */
 
 .animation_btn {
-  background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
+  background: linear-gradient(90deg, transparent 25%, hsl(0, 0%, 96%, .9));
 
-  font-family: 'Press Start 2P', cursive;
+  opacity: .7;
 
-  height: 2rem;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-weight: 100;
+  letter-spacing: .2em;
+
+  height: 3rem;
   width: 25rem;
 
   cursor: pointer;
@@ -96,7 +102,7 @@
 }
 
 .animation_btn:hover {
-  background-color: #acacac;
+  background-color: hsl(0, 0%, 96%, .2);
   width: 100%;
 
 }

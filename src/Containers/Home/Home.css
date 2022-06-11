@@ -63,12 +63,15 @@ h2 {
 
 
 .button {
-    background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
+    background: linear-gradient(90deg, transparent, whitesmoke, transparent);
 
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: 100;
+    letter-spacing: .1em;
 
-    font-family: 'Press Start 2P', cursive;
-
-    height: 2.7rem;
+    height: 3.7rem;
     width: 15rem;
 
     margin-block: .5em;
@@ -81,7 +84,7 @@ h2 {
 }
 
 .button:hover {
-    background-color: #acacac;
+    background-color: hsl(0, 0%, 96%, .2);
     width: 100%;
 
     transition: .2s;
@@ -126,7 +129,8 @@ h2 {
 
 
     .button {
-        height: 2rem;  
+        
+    height: 4.7rem;
     }
 
     
@@ -135,9 +139,9 @@ h2 {
 /* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 600px) {
 
-    /* .welcome_text {
+    .welcome_text {
         text-align: left;
-    } */
+    }
 
     .home {
         background-position-x: 55%;
