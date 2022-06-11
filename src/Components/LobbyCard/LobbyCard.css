@@ -157,7 +157,7 @@ svg {
 
 @media screen and (max-width: 600px) {
     .box_lobby_card:last-child {
-        margin-bottom: 15%;
+        margin-bottom: 20%;
     }
 }
 
@@ -171,6 +171,6 @@ svg {
 
   @media screen and (max-width: 250px) {
     .box_lobby_card:last-child {
-        margin-bottom: 35%;
+        margin-bottom: 45%;
     }
   }

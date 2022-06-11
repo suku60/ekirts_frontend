@@ -50,6 +50,7 @@ form input:hover, form input:focus {
 
     box-shadow: 0 .5em .8em hsl(0, 0%, 0%, .1) inset, 0 0 8px hsl(0, 0%, 0%, .3);
 
+    transition: .2s;
 }
 
 form input:focus {
@@ -137,6 +138,9 @@ while user uses the form */
     background-color: var(--neon-color-rose);
 
     box-shadow: 0 .5em .8em hsl(0, 0%, 0%, .1) inset, 0 0 8px hsl(0, 0%, 0%, .3);
+    
+    transition: .2s;
+
 }
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */

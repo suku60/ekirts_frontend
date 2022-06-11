@@ -20,12 +20,16 @@ ul {
 
 ul li {
 
-    color: black;
+
+    background-color: var(--neon-color-dark-0);
+    color: hsl(0, 0%, 96%, .8);
 
     list-style: none;
     padding: 1em;
+
+    border-radius: 2rem 0rem 0rem 2rem;
     
-    width: fit-content;
+    width: 5rem;
     height: 1em;
     
     position: relative;
@@ -69,7 +73,7 @@ ul li:hover {
 
 @media screen and (max-width: 600px) {
   ul {
-    background-color: whitesmoke;
+    background-color: var(--neon-color-dark-0);
 
     top: unset;
     bottom: 0%;
@@ -90,8 +94,21 @@ ul li:hover {
     }
   
   ul li {
-      margin-inline: .8em;
+    height: 100%;
+
+    background-color: transparent;
+    
+    margin-inline: .8em;
+
+    border-radius: 2rem;
   }
+
+  ul li:hover {
+    background-color: whitesmoke;
+    color: var(--neon-color-dark-0);
+
+  }
+
 
   ul li:last-child {
       margin-bottom: .8em;
@@ -104,8 +121,6 @@ ul li:hover {
 
 
     ul li {
-
-        color: black;
     
         list-style: none;
         padding: 1em;

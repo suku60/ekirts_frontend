@@ -21,6 +21,8 @@ const Lobbies = (props) => {
   const [notificationDisplay, setNotificationDisplay] = useState("none");
   const [msg, setMsg] = useState("");
   const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
+  const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
+
 
 
   useEffect(() => {
@@ -43,8 +45,10 @@ const Lobbies = (props) => {
 
     if(bgAnimationStateContainer){
       setBgAnimationStateContainer(false);
+      setAnimationTextIndicator("off");
     }else{
       setBgAnimationStateContainer(true);
+      setAnimationTextIndicator("on");
     }
 
   }
@@ -96,8 +100,8 @@ const Lobbies = (props) => {
       <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={msg}/>
       
-      <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>turn anmations off</div>
-      <div className="board"  id='animItemFromTopToBottom'>
+      <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>animations {animationTextIndicator}</div>
+     <div className="board"  id='animItemFromTopToBottom'>
         
       { lobbies.map(lobbyObject => {
         return(
@@ -114,12 +118,6 @@ const Lobbies = (props) => {
     </div>
   )
 }
-
-// id
-// lobbyName
-// turnSecondsTimer
-// gameMaxMinutesTimer
-// playersSize
 
 export default connect((state) => ({
   passport: state.passport,

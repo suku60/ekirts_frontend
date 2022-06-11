@@ -1,26 +1,3 @@
-.card {
-
-    background-color: yellow;
-
-    width: 100%;
-    min-height: 70%;
-    /* max-width: 100%; */
-
-    margin-left: 2%;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-    margin-block: 1em;
- 
-}
-
-.card:first-child {
-    margin-top: 10%;
-}
-
 .container_card_img {
     background-color: blue;
     height: 100%;
@@ -45,40 +22,20 @@
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 1200px) {
+
+
 }
 
 /* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 800px) {
-    
-        .card {
-
-            margin-left: 2.5%;
-            min-height: 100%;
-
-            flex-direction: column;
-            align-items: center;
- 
-}
-
-        .card:first-child {
-            margin-top: 2%;
-        }
 }
 
 /* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 600px) {
-    .card {
-        
-        margin-left: 0%;
-       
-        min-height: 89%;
-    }
+
 }
 
 /* 400PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 400px) {
 
-    .card {
-        min-height: 90%;
-    }
 }

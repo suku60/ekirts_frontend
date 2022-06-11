@@ -21,7 +21,7 @@
 }
 
 .full {
-    background-color: blue;
+    background-color: var(--neon-color-rose);
 
     border-radius: 50%;
     transition: .5s;
