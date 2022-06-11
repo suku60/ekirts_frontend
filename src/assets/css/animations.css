@@ -94,15 +94,18 @@
 }
 
 #animAbsoluteBg{
-    animation: bgMovement 7.5s infinite linear;
+    animation: bgMovement 20s infinite linear;
 }
 
 @keyframes bgMovement {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1.5);
+    }
+    50% {
+        transform: rotate(180deg) scale(3);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(1.5);
     }
 }
     
@@ -120,5 +123,15 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+
+/* SOME ANIMATIONS ON SMALL DEVICES WILL BE OFF TEMPORARY */
+@media screen and (max-width: 800px) {
+
+    #animAbsoluteBg{
+        animatioN: none;
+        transform: rotate(-15deg);
     }
 }

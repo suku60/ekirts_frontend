@@ -14,7 +14,7 @@ const Home = (props) => {
   const [formState, setFormState] = useState("none");
   const [formType, setFormType] = useState(undefined);
 
-  const [bgAnimationStateHome, setBgAnimationStateHome] = useState(true);
+  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
 
   useEffect(() => {
 
@@ -43,17 +43,17 @@ const Home = (props) => {
 
   const backgroundAnimState = () => {
 
-    if(bgAnimationStateHome){
-      setBgAnimationStateHome(false);
+    if(bgAnimationStateContainer){
+      setBgAnimationStateContainer(false);
     }else{
-      setBgAnimationStateHome(true);
+      setBgAnimationStateContainer(true);
     }
 
   }
   
   return (
     <div className="box_basic_container home" id='animReverseFade'>
-      <AbsoluteBackground bgAnimationState={bgAnimationStateHome}/>
+      <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Form displayFromParent={formState} formType={formType}/>
       <div className="box_home_container">
         <h1 className="welcome_text" id="animItemFromTopToBottom">EKIRTS GAME</h1>

@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 
 import './Lobbies.css';
 import { useNavigate } from 'react-router-dom';
+import AbsoluteBackground from '../../Components/AbsoluteBackground/AbsoluteBackground';
 
 const Lobbies = (props) => {
 
@@ -19,6 +20,8 @@ const Lobbies = (props) => {
 
   const [notificationDisplay, setNotificationDisplay] = useState("none");
   const [msg, setMsg] = useState("");
+  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
+
 
   useEffect(() => {
 
@@ -36,6 +39,16 @@ const Lobbies = (props) => {
   },[]);
  
 
+  const backgroundAnimState = () => {
+
+    if(bgAnimationStateContainer){
+      setBgAnimationStateContainer(false);
+    }else{
+      setBgAnimationStateContainer(true);
+    }
+
+  }
+  
   // Services
   const bringLobbies = async (type) => {
 
@@ -79,8 +92,11 @@ const Lobbies = (props) => {
   // // console.log("lobbies", lobbies);
 
   return (
-    <div className="box_basic_container box_bg Lobbies">
+    <div className="box_basic_container Lobbies">
+      <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={msg}/>
+      
+      <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>turn anmations off</div>
       <div className="board"  id='animItemFromTopToBottom'>
         
       { lobbies.map(lobbyObject => {

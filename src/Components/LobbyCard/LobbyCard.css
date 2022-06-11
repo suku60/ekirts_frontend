@@ -96,6 +96,9 @@ svg {
 }
 /* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
 
+
+
+
 @media screen and (max-width: 800px) {
     svg {
         margin: 10%;
@@ -153,10 +156,21 @@ svg {
 /* 500PX WIDTH SCREEN ADAPTIVE MEDIA */
 
 @media screen and (max-width: 600px) {
+    .box_lobby_card:last-child {
+        margin-bottom: 15%;
+    }
 }
 
 /* 360PX WIDTH SCREEN ADAPTIVE MEDIA */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
+    .box_lobby_card:last-child {
+        margin-bottom: 25%;
+    }
   }
 
+  @media screen and (max-width: 250px) {
+    .box_lobby_card:last-child {
+        margin-bottom: 35%;
+    }
+  }

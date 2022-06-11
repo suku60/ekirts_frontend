@@ -3,22 +3,23 @@ import './AbsoluteBackground.css';
 
 const AbsoluteBackground = (props) => {
 
-  const [backgroundAnimation, setBackgroundAnimation] = useState("animAbsoluteBg");
+  const [backgroundAnimation, setBackgroundAnimation] = useState("running");
 
   useEffect(() => {
   },[]);
 
   useEffect(() => {
     if(!props.bgAnimationState){
-      setBackgroundAnimation("");
+      setBackgroundAnimation("paused");
     }else{
-      setBackgroundAnimation("animAbsoluteBg");
+      setBackgroundAnimation("running");
     }
   },[props]);
 
 
   return (
-    <div className="box_absolute_bg box_bg" id={backgroundAnimation}>
+    <div className="box_absolute_bg bg_image">
+      <div className="background_animation box_bg"  id="animAbsoluteBg" style={{animationPlayState:backgroundAnimation}}></div>
     </div>
   )
 }

@@ -3,4 +3,17 @@
 
     height: 300%;
     width: 300%;
+
+    z-index: -1;
+}
+
+.background_animation {
+    height: 100%;
+    width: 100%;
+}
+
+.bg_image {
+    background-image: url(../../assets/images/absoluteBackground.jpg);
+    background-position: 50%;
+    background-size: cover;
 }

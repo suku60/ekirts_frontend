@@ -95,23 +95,6 @@ h2 {
     margin-bottom: 25%;
 }
 
-.animation_btn {
-    background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
-
-    font-family: 'Press Start 2P', cursive;
-
-    height: 2rem;
-    width: 25rem;
-
-    cursor: pointer;
-
-    transition: .2s;
-
-    position: absolute;
-    right: 0;
-    bottom: 2%;
-
-}
 
 /* 1500PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 1500px) {
@@ -145,24 +128,7 @@ h2 {
         height: 2rem;  
     }
 
-    .animation_btn {
-        background: linear-gradient(90deg, transparent, hsl(0, 0%, 96%, .8), transparent);
     
-        font-family: 'Press Start 2P', cursive;
-        font-size: small;
-    
-        height: 1rem;
-        width: 10rem;
-    
-        cursor: pointer;
-    
-        transition: .2s;
-    
-        position: absolute;
-        right: 0;
-        bottom: 90%;
-    
-    }
 }
 
 /* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
