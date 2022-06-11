@@ -158,6 +158,13 @@ svg {
 .status svg {
     min-height: 20%;
     width: 100%;
+
+    margin-block: .2em;
+}
+
+/* WORKING ON THISSSS */
+.status svg:nth-child(2) {
+    margin-left: 1em;
 }
 
 
