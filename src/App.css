@@ -6,7 +6,8 @@
   height: 100vh;
   width: 100vw;
 
-  overflow: hidden;
+  overflow:hidden;
+
 }
 
 /* GLOBAL COMMON CLASSES */
@@ -43,8 +44,10 @@
   align-items: center;
 
   height: 100%;
+  max-height: 100vh;
   width: 100%;
 
+  overflow: hidden;
 }
 
 /* container inside */
@@ -135,12 +138,29 @@
 
 
 @media screen and (max-width: 600px) {
+
+  .App {
+    height: 100vh;
+    width: 100vw;
+  }
+
   .board {
       margin-left: 0%;
       left: 0%;
       width: var(--board-width-600px-br);
   }
 }
+
+
+@media screen and (max-width: 400px) {
+  
+  .App {
+    max-height: 100vh;
+    width: 100vw;
+  }
+}
+
+
 
 
 

@@ -4,7 +4,7 @@ import './GameTitle.css';
 const GameTitle = () => {
 
   // WILL BE REFACTORED LATER SO WE ONLY HAVE TO WRITE A TEXT
-  let gameTitle = ["A","A","C","A","A","C","A","A","C" ]
+  let gameTitle = ["S","C","R","A","B","A","L","A","D","D","E","R" ]
 
   return (
     <div className="box_game_title">
@@ -13,7 +13,7 @@ const GameTitle = () => {
               return ( 
                  <li key={index}>
                    <input type="checkbox" />
-                     <div className="centered_children">
+                     <div className="centered_children letter_container">
                        {gameTitle}
                      </div>
                  </li>

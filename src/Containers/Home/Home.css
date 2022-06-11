@@ -8,6 +8,7 @@ h2 {
 
     min-height: 100%;
     min-width: 100%;
+    max-height: 100%;
 
     z-index: 3;
 }
@@ -134,9 +135,9 @@ h2 {
 /* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 600px) {
 
-    .welcome_text {
+    /* .welcome_text {
         text-align: left;
-    }
+    } */
 
     .home {
         background-position-x: 55%;
