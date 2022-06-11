@@ -82,13 +82,11 @@ const Lobbies = (props) => {
       setMsg("Something went wrong, please try again later");
      
       // // console.log(error)
-
-
     }
-
 
   }
 
+  console.log("lobbies", lobbies)
 
   return (
     <div className="box_basic_container Lobbies">
@@ -99,6 +97,7 @@ const Lobbies = (props) => {
      <div className="board"  id='animItemFromTopToBottom'>
         
       { lobbies.map(lobbyObject => {
+      
         // console.log("lobbyObject", lobbyObject);
         return(
           <LobbyCard

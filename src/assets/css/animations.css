@@ -73,12 +73,16 @@
 @keyframes continousFadeInOut {
     0% {
         opacity: 1;
+        background-color: var(--neon-color-rose-2);
     }
     50% {
         opacity: 0;
+        background-color: var(--neon-color-blue);
+
     }
     100% {
         opacity: 1;
+        background-color: var(--neon-color-rose);
     }
 }
 
@@ -118,7 +122,7 @@
 
 /* --- ROTATIONS */
 #animLoader {
-    animation: loaderRotation 200s reverse linear infinite;
+    animation: loaderRotation 20s reverse linear infinite;
 }
 
 @keyframes loaderRotation {

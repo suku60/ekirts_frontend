@@ -21,9 +21,9 @@
 }
 
 .full {
-    background-color: var(--neon-color-rose);
+    background-color: var(--neon-color-rose-2);
 
-    border-radius: 50%;
+    border-radius: 12%;
     transition: .5s;
 
     margin: .05em;

@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './LobbyCard.css';
 
 import {ReactComponent as PrivateSvg} from '../../assets/svg/private.svg'
@@ -11,11 +13,53 @@ import {ReactComponent as EyeSvg} from '../../assets/svg/eye.svg'
 
 const LobbyCard = (props) => {
 
+  let navigate = useNavigate();
 // console.log(props)
 
   const [isPrivate, setIsPrivate] = useState(props.isPrivate);
   const [isFull, setIsFull] = useState(props.isFull);
   const [isActive, setIsActive] = useState(props.isActive);
+
+  const userJoinsThisLobby = async (lobby) => {
+
+
+    // let config = {
+    //   headers: { Authorization: `Bearer ${props?.passport?.token}` }
+    // };
+
+    // let addingPlayerdataResponse;
+
+    // let playerJoiningDatabody = {
+    //   playerColor  : playerColorData,
+    //   userId  : props.passport?.user?.id,
+    //   lobbyId : lobby?.id,
+    // }
+
+    // try  {
+
+    //   let addingPlayerdataResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/players/create`, playerJoiningDatabody, config);
+
+
+    //   if(!addingPlayerdataResponse?.data?.id){
+
+    //     setMsg(addingPlayerdataResponse.data)
+        
+    //   }else{
+
+    //     navigate(`/lobbies/${playerJoiningDatabody.lobbyId + Math.round(666*Math.random(666))}`)
+
+
+    //   }
+
+
+    // }catch(errorDisplay) {
+
+    //   hideIndicator()
+    //   setMsg("Can't join this lobby right now")
+    
+    // }
+
+  }
 
   return (
     <div className="box_lobby_card  italic_text" 
@@ -24,7 +68,7 @@ const LobbyCard = (props) => {
         <div className="lobby_name">
           {props.lobbyName}
         </div> 
-        <div className="temporary_join_btn centered_content">
+        <div className="temporary_join_btn centered_content" onClick={()=>{userJoinsThisLobby(props.key)}}>
           join
         </div> 
       </div>
