@@ -83,8 +83,19 @@
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 
 @media screen and (max-width: 1200px) {
-    ul {
-        width: 17.5%;
+  .box_game_title ul {
+    background-color: transparent;
+    
+    display: grid;
+    grid-template-columns: 7fr 7fr 7fr 7fr;
+    grid-template-rows: 2em 7em 7em;
+
+    
+    justify-content: center;
+    margin: 0%;
+    margin-left: -10%;
+
+    max-width: 100vw;
     }
 }
 

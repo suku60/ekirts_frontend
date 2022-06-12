@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import './LobbyCard.css';
 
+import { connect } from "react-redux";
+import { LOBBYJOIN, LOBBYWATCH } from "../../redux/types";
+
 import {ReactComponent as PrivateSvg} from '../../assets/svg/private.svg'
 import {ReactComponent as PublicSvg} from '../../assets/svg/public.svg'
 import {ReactComponent as ActiveSvg} from '../../assets/svg/active.svg'
@@ -14,50 +17,22 @@ import {ReactComponent as EyeSvg} from '../../assets/svg/eye.svg'
 const LobbyCard = (props) => {
 
   let navigate = useNavigate();
-// console.log(props)
 
   const [isPrivate, setIsPrivate] = useState(props.isPrivate);
   const [isFull, setIsFull] = useState(props.isFull);
   const [isActive, setIsActive] = useState(props.isActive);
 
-  const userJoinsThisLobby = async (lobby) => {
+  const selectLobby = (selectedLobbyId, action) => {
 
-
-    // let config = {
-    //   headers: { Authorization: `Bearer ${props?.passport?.token}` }
-    // };
-
-    // let addingPlayerdataResponse;
-
-    // let playerJoiningDatabody = {
-    //   playerColor  : playerColorData,
-    //   userId  : props.passport?.user?.id,
-    //   lobbyId : lobby?.id,
-    // }
-
-    // try  {
-
-    //   let addingPlayerdataResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/players/create`, playerJoiningDatabody, config);
-
-
-    //   if(!addingPlayerdataResponse?.data?.id){
-
-    //     setMsg(addingPlayerdataResponse.data)
-        
-    //   }else{
-
-    //     navigate(`/lobbies/${playerJoiningDatabody.lobbyId + Math.round(666*Math.random(666))}`)
-
-
-    //   }
-
-
-    // }catch(errorDisplay) {
-
-    //   hideIndicator()
-    //   setMsg("Can't join this lobby right now")
     
-    // }
+    if(action === "join"){
+      navigate(`/lobbies/${selectedLobbyId}`)
+      props.dispatch({type: LOBBYJOIN, payload: selectedLobbyId})
+    }else{
+      navigate(`/lobbies/${selectedLobbyId}`)
+      props.dispatch({type: LOBBYWATCH, payload: selectedLobbyId})
+    }
+    // desiredView(`/lobbies/${lobby.id + Math.round(666*Math.random(666))}`)
 
   }
 
@@ -68,8 +43,8 @@ const LobbyCard = (props) => {
         <div className="lobby_name">
           {props.lobbyName}
         </div> 
-        <div className="temporary_join_btn centered_content" onClick={()=>{userJoinsThisLobby(props.key)}}>
-          join
+        <div className="temporary_join_btn centered_content" onClick={()=>{selectLobby(props.id, "join")}}>
+          JOIN
         </div> 
       </div>
       <div className="lobby_card_data centered_content">
@@ -90,7 +65,7 @@ const LobbyCard = (props) => {
           { isFull ? <PlayersSvg fill="red"/> : <PlayersSvg fill="green"/> }
           { isActive ? <ActiveSvg fill="red"/> : <ActiveSvg fill="green"/> }
         </div>
-        <div className="lobby_data centered_content data_watch">
+        <div className="lobby_data centered_content data_watch"  onClick={()=>{selectLobby(props.id, "watch")}}>
           <EyeSvg/>
         </div>
       </div>
@@ -98,4 +73,7 @@ const LobbyCard = (props) => {
   )
 }
 
-export default LobbyCard;
+export default connect((state) => ({
+  passport: state.passport,
+  lobby: state.lobby
+}))(LobbyCard);

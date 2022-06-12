@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Lobby = (props) => {
 
+  console.log(props)
+
   let navigate = useNavigate("");
 
     const [customMsg, setCustomMsg] = useState("");
@@ -31,9 +33,9 @@ const Lobby = (props) => {
 
     useEffect(()=> {
 
-      if(!playersData.length) {
-        bringPlayers()
-      }
+      // if(!playersData.length) {
+      //   bringPlayers()
+      // }
 
       if(!props.passport?.token){
         navigate("/");
@@ -61,7 +63,7 @@ const Lobby = (props) => {
           
           let lobbyData = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/find/${lobbyId}`, config);
      
-          console.log("data", lobbyData)
+          // console.log("data", lobbyData)
       } catch (error) {
 
           setCustomMsg(error.data)
@@ -72,7 +74,7 @@ const Lobby = (props) => {
 
             let playersFromLobbyData = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/players/find/lobby/${lobbyId}`, config);
 
-            console.log("players", playersFromLobbyData)
+            // console.log("players", playersFromLobbyData)
             
             if (playersFromLobbyData.data.length) {
                 setPlayersData(playersFromLobbyData.data)
@@ -85,6 +87,45 @@ const Lobby = (props) => {
         }
     }
 
+    const userJoinsThisLobby = async (lobby) => {
+
+      let config = {
+        headers: { Authorization: `Bearer ${props?.passport?.token}` }
+      };
+  
+      let addingPlayerdataResponse;
+  
+      let playerJoiningDatabody = {
+        // playerColor  : playerColorData,
+        userId  : props.passport?.user?.id,
+        lobbyId : lobby?.id,
+      }
+  
+      // try  {
+  
+      //   let addingPlayerdataResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/players/create`, playerJoiningDatabody, config);
+  
+  
+      //   if(!addingPlayerdataResponse?.data?.id){
+  
+      //     setMsg(addingPlayerdataResponse.data)
+          
+      //   }else{
+  
+      //     navigate(`/lobbies/${playerJoiningDatabody.lobbyId + Math.round(666*Math.random(666))}`)
+  
+  
+      //   }
+  
+  
+      // }catch(errorDisplay) {
+  
+      //   hideIndicator()
+      //   setMsg("Can't join this lobby right now")
+      
+      // }
+  
+    }
     const leaveLobby = async (pk) => {
 
         try {

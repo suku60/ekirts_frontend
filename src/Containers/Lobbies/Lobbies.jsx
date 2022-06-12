@@ -102,6 +102,7 @@ const Lobbies = (props) => {
         return(
           <LobbyCard
           key={lobbyObject.id}
+          id={lobbyObject.id}
           lobbyName={lobbyObject.lobbyName}
           playersSize={lobbyObject.playersSize}
           turnSecondsTimer={lobbyObject.turnSecondsTimer}

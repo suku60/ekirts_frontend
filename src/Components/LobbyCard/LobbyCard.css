@@ -1,8 +1,9 @@
 svg {
 
-    height: 100%;
-    width: 100%;
-    margin: 15%;
+    max-height: 80%;
+    max-width: 80%;
+
+    margin: 12%;
 }
 
 .box_lobby_card {
@@ -162,11 +163,6 @@ svg {
     margin-block: .2em;
 }
 
-/* WORKING ON THISSSS */
-.status svg:nth-child(2) {
-    margin-left: 1em;
-}
-
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 1200px) {
@@ -179,16 +175,17 @@ svg {
 
         max-height: 40%;
 
-        padding-left: 20%;
+        padding-left: 0%;
     }
 
     .data_size_timer svg:last-child {
-        margin-left: 0%;
+        
+        margin-left: 8%;
 
     }
 
     .data_size_timer svg {
-        margin-left: -15%;
+        margin-left: -5%;
     }
 
     .data_watch {

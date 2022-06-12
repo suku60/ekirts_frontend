@@ -1,5 +1,5 @@
 export const LOGIN = 'login';
 export const LOGOUT = 'logout';
 
-export const LOBBYLOG = 'lobbylog';
-export const SEARCHLOG = 'searchlog';
+export const LOBBYJOIN = 'LOBBYJOIN';
+export const LOBBYWATCH = 'LOBBYWATCH';

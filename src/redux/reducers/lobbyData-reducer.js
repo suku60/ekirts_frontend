@@ -1,17 +1,17 @@
-import {LOBBYLOG, SEARCHLOG} from '../types';
+import {LOBBYJOIN, LOBBYWATCH} from '../types';
 
 const initialState = {
-    lobbydata: {},
-    search_lobby: []
+    joinLobbyData: {},
+    watchLobbyData: []
 };
 
 const lobbyDataReducer = (state = initialState, action) => {
     switch(action.type){
-        case LOBBYLOG :
+        case LOBBYJOIN :
             return {...state, lobbydata: action.payload};
 
-        case SEARCHLOG :
-            return {...state, search_lobby: action.payload};
+        case LOBBYWATCH :
+            return {...state, watchLobbyData: action.payload};
 
         default :
             return state

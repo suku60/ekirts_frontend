@@ -258,7 +258,7 @@ switch(formType){
       <Loader loaderState={loaderDisplay}/>  
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
       <div className="form_container" id="animItemFromBottomToTop">
-        <button className="close_form_button centered_content" onClick={()=>{setFormDisplay("none")}}>X</button>
+        <button className="close_form_button centered_content" onClick={()=>{setFormDisplay("none")}}>ⓧ</button>
         <form className='centered_content'>
           <h1>Create your account</h1>
           <input 
@@ -308,7 +308,7 @@ switch(formType){
         <div className="form_container" id="animItemFromBottomToTop">
           <button 
           className="close_form_button centered_content" 
-          onClick={()=>{setFormDisplay("none")}}>X</button>
+          onClick={()=>{setFormDisplay("none")}}>ⓧ</button>
           <form className='centered_content'>
             <h1>Login with your account</h1>
             <input 
@@ -342,7 +342,7 @@ switch(formType){
       <div className="form_container" id="animItemFromBottomToTop">
         <button 
         className="close_form_button centered_content" 
-        onClick={()=>{setFormDisplay("none")}}>X</button>
+        onClick={()=>{setFormDisplay("none")}}>ⓧ</button>
         <form className='centered_content'>
           <h1>Create your account DEFAULT</h1>
           <input 
