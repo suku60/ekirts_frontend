@@ -22,6 +22,15 @@
   align-items: center;
 
 }
+
+.top_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 1%;
+}
 /* content placed on the top left */
 .left_content {
   

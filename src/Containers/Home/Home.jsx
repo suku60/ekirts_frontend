@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { connect } from "react-redux";
+import { ANIMATIONSLOG } from "../../redux/types";
 
 import './Home.css';
 
@@ -15,7 +17,7 @@ const Home = (props) => {
   const [formState, setFormState] = useState("none");
   const [formType, setFormType] = useState(undefined);
 
-  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
+  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(props.userOptions.animations);
 
   const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
 
@@ -47,10 +49,12 @@ const Home = (props) => {
   const backgroundAnimState = () => {
 
     if(bgAnimationStateContainer){
+      props.dispatch({type: ANIMATIONSLOG, payload: false})
       setBgAnimationStateContainer(false);
       setAnimationTextIndicator("off");
     }else{
       setBgAnimationStateContainer(true);
+      props.dispatch({type: ANIMATIONSLOG, payload: true})
       setAnimationTextIndicator("on");
     }
 
@@ -75,5 +79,6 @@ const Home = (props) => {
 }
 
 export default connect((state) => ({
-  passport: state.passport
+  passport: state.passport,
+  userOptions: state.userOptions
 }))(Home);

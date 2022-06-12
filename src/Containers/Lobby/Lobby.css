@@ -10,6 +10,7 @@ button, input[type="submit"], input[type="reset"] {
 
 }
 
+
 .player {
     background: linear-gradient(to top, hsl(0, 0%, 0%, .2), hsl(0, 0%, 100%, .3));
 
@@ -65,7 +66,8 @@ button, input[type="submit"], input[type="reset"] {
 
 .player_leave_btn:hover {
     background: linear-gradient(to top, hsl(0, 0%, 0%, .1), hsl(0, 0%, 100%, .1));
-    background-color: var(--neon-color-red);
+    background-color: var(--neon-color-white);
+    color: var(--neon-color-dark-0);
 
     transition: .3s;
 }
@@ -90,6 +92,79 @@ button, input[type="submit"], input[type="reset"] {
     transition: .1s;
 }
 
+.container_lobby_name {
+    background: linear-gradient(to top, hsl(0, 0%, 0%, .2), hsl(0, 0%, 100%, .3));
+    background-color: var(--neon-color-white);
+
+    height: 5%;
+    width: 100%;
+
+
+    color: black;
+    margin-block: .3rem;
+    padding: 0%;
+}
+
+.container_lobby_name h1 {
+    color: black;
+    height: 100%;
+    width: fit-content;
+}
+
+.container_admin_owner_options {
+    background-color: var(--neon-color-dark);
+
+    height: 13%;
+    width: 100%;
+
+    color: whitesmoke;
+
+    margin-bottom: 1%;
+    padding: 0%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.owner_btn {
+    background: linear-gradient(to top, hsl(0, 0%, 0%, .2), hsl(0, 0%, 100%, .3));
+
+    height: 100%;
+    width: 10%;
+
+    opacity: .6;
+    color: whitesmoke;
+
+    cursor: pointer;
+    transition:.1s
+
+} 
+
+.owner_btn:hover {
+    background: linear-gradient(to top, hsl(0, 0%, 0%, .15), hsl(0, 0%, 100%, 0.15));
+    background-color: var(--neon-color-white);
+    color: var(--neon-color-dark);
+
+    opacity: 1;
+    transition:.1s
+}
+
+.play_btn {
+
+    width: 80%;
+    background-color: var(--neon-color-dark-2);
+
+}
+
+
+.delete_btn {
+    
+    width: 20%;
+    background-color: var(--neon-color-red);
+    word-wrap: break-word;
+    padding-inline: .6rem;
+
+}
 
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 @media screen and (max-width: 1200px) {
@@ -102,6 +177,27 @@ button, input[type="submit"], input[type="reset"] {
 
     .player_leave_btn {
         width: 30%;
+    }
+
+    .lobby_name {
+        font-size: 1em;
+    }
+
+    .container_admin_owner_options {
+        height: 8%;
+    }
+
+    .play_btn {
+
+        width: 78%;
+    
+    }
+    
+    
+    .delete_btn {
+        
+        width: 22%;
+    
     }
 
 }

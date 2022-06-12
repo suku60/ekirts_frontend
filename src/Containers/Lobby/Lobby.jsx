@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { connect } from "react-redux";
-import { LOBBYLOG, ISUSERJOININGLOBBY } from "../../redux/types";
+import { LOBBYLOG, ISUSERJOININGLOBBY, ANIMATIONSLOG } from "../../redux/types";
 
 import axios from 'axios';
 
 import './Lobby.css';
 import Loader from '../../Components/Loader/Loader';
 import Notification from '../../Components/Notification/Notification';
+import AbsoluteBackground from '../../Components/AbsoluteBackground/AbsoluteBackground';
+
 
 const Lobby = (props) => {
 
@@ -22,12 +24,17 @@ const Lobby = (props) => {
     const [playersData, setPlayersData] = useState([]);
     const [userPlayerId, setUserPlayerId] = useState(undefined);
 
+    const [lobbyData, setLobbyData] = useState(undefined);
+
     const [isPlayerJoining, setIsPlayerJoining] = useState(false);
     const [isUserAbleToJoin, setIsUserAbleToJoin] = useState(true);
 
     const [loaderDisplay, setLoaderDisplay] = useState("none");
     const [joinButtonDisplay, setJoinButtonDisplay] = useState("flex");
-
+    const [displayAdminOptions, setDisplayAdminOptions] = useState("none");
+  
+    const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(props.userOptions.animations);
+    const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
     
     
     // const [displayOwnerPannel, setDisplayOwnerPannel] = useState("none");
@@ -82,6 +89,10 @@ const Lobby = (props) => {
         getColor(lobbyId);
       }
 
+      if(props.passport.user.admin){
+        setDisplayAdminOptions("flex");
+      }
+
 
     });
 
@@ -102,7 +113,25 @@ const Lobby = (props) => {
             }
           }
 
-    },[playersData, isPlayerJoining]);
+        if(lobbyData?.ownerId === props.passport?.user?.id) {
+          setDisplayAdminOptions("flex");
+        }
+
+    },[playersData, isPlayerJoining, lobbyData]);
+
+    const backgroundAnimState = () => {
+
+      if(bgAnimationStateContainer){
+        props.dispatch({type: ANIMATIONSLOG, payload: false})
+        setBgAnimationStateContainer(false);
+        setAnimationTextIndicator("off");
+      }else{
+        setBgAnimationStateContainer(true);
+        props.dispatch({type: ANIMATIONSLOG, payload: true})
+        setAnimationTextIndicator("on");
+      }
+  
+    }
 
     const getLobbyData = async () => {
 
@@ -111,6 +140,9 @@ const Lobby = (props) => {
       try {
           
           let lobbyData = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/find/${lobbyId}`, config);
+
+          setLobbyData(lobbyData.data);
+          console.log(lobbyData.data);
 
       } catch (error) {
 
@@ -244,36 +276,39 @@ const Lobby = (props) => {
         }
     }
 
-    // const deleteLobby = async (pk) => {
+    const deleteLobby = async (pk) => {
 
-    //     try {
+      setLoaderDisplay("flex");
 
-    //         let playerDeletingLobby = await axios.delete(`https://cryptic-citadel-48065.herokuapp.com/lobbies/delete/${pk}`, config);
+        try {
 
-    //         console.log("response from deleting lobby", playerDeletingLobby)
+            let playerDeletingLobby = await axios.delete(`https://cryptic-citadel-48065.herokuapp.com/lobbies/delete/${pk}`, config);
 
-    //         if(playerDeletingLobby.status === 200){
-    //           navigate("/lobbies")
-    //         }
-        
+            console.log("response from deleting lobby", playerDeletingLobby)
+
+            if(playerDeletingLobby.status === 200){
+              navigate("/lobbies")
+            }
+
+            setLoaderDisplay("none");
+
+        } catch (error) {
   
-    //     } catch (error) {
-  
-    //         setCustomMsg(error.data)
+            setCustomMsg(error.data)
+            setLoaderDisplay("none");
     
-    //     }
-    // }    
+        }
+    }    
 
-    // console.log("lobbydata", lobbyId, "playersData", playersData, "user", props.passport?.user?.id);
-
-    // console.log("playersData", playersData);
- 
     return (
     <div className="box_basic_container box_bg lobby italic_text">
-      
+      <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Loader loaderState={loaderDisplay}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-      <div className="board centered_content" id='animReverseFade'>
+      <div className="board top_content" id='animReverseFade'>
+        <div className="container_lobby_name centered_content">
+          <h1 className="lobby_name">{lobbyData?.lobbyName}</h1>
+        </div>   
         {playersData.map((player, index) => {
           // console.log(player.userId, props.passport?.user?.id)
           if(player.userId === props.passport?.user?.id){
@@ -296,7 +331,11 @@ const Lobby = (props) => {
             )}}
           )
         }
-      <div className="player_join_btn centered_content" onClick={()=>{getColor(lobbyId)}}style={{display:joinButtonDisplay}}>join lobby</div>
+        <div className="player_join_btn centered_content" onClick={()=>{getColor(lobbyId)}}style={{display:joinButtonDisplay}}>join lobby</div>
+        <div className="container_admin_owner_options" style={{display: displayAdminOptions}}>
+            <div className="owner_btn play_btn centered_content">play</div>
+            <div className="owner_btn delete_btn centered_content" onClick={()=>deleteLobby(lobbyId)}>delete lobby</div>
+        </div>
       </div>
     </div>
   )
@@ -304,5 +343,7 @@ const Lobby = (props) => {
 
 export default connect((state) => ({
   passport: state.passport,
-  lobby: state.lobby
+  lobby: state.lobby,
+  userOptions: state.userOptions
+
 }))(Lobby);

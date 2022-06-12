@@ -10,7 +10,7 @@ import Loader from '../Loader/Loader';
 
 // REDUX
 import { connect } from 'react-redux';
-import { LOGIN, LOBBYLOG } from '../../redux/types';
+import { LOGIN, LOBBYLOG, ISUSERJOININGLOBBY } from '../../redux/types';
 import { deployURL, mainURL, localURl } from '../../environments';
 
 
@@ -271,6 +271,7 @@ const Form = (props) => {
       turnSecondsTimer: userData.turnSecondsTimer,
       gameMaxMinutesTimer: userData.gameMaxMinutesTimer,
     }
+    
 
     if(!dataBody.lobbyName){
 
@@ -281,19 +282,28 @@ const Form = (props) => {
 
       try  {
 
+
         let config = {
           headers: { Authorization: `Bearer ${props?.passport?.token}` }
       };
 
         let newLobbyResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/lobbies/create`, dataBody, config);
 
+        console.log("newLobbyResponse:", newLobbyResponse)
+
         if(!newLobbyResponse?.data?.lobby){
 
-          setCustomMsg("Lobbyname already in use");
+          setCustomMsg(newLobbyResponse?.data?.msg);
+          setLoaderDisplay("none");
 
         }else{
 
-          props.dispatch({ type: LOBBYLOG, payload: newLobbyResponse.data.lobby });
+          props.dispatch({type: LOBBYLOG, payload: newLobbyResponse.data.lobby.id})
+          props.dispatch({type: ISUSERJOININGLOBBY, payload: true})
+          setLoaderDisplay("none");
+          setFormDisplay("none");
+
+          navigate(`/lobbies/${newLobbyResponse.data.lobby.id}`)
   
 
         }
@@ -301,6 +311,7 @@ const Form = (props) => {
       }catch(errorDisplay) {
 
       setCustomMsg("Lobby creation failed");
+      console.log("errorDisplay:", errorDisplay)
 
       }
     }
@@ -424,6 +435,7 @@ switch(formType){
           name="turnSecondsTimer"
           required/>
           <input 
+          // NEEDS HOTFIX
           onChange={(e) => { fillForm(e) }} 
           className='input_gameMaxMinutesTimes' 
           type="number" 
@@ -432,7 +444,7 @@ switch(formType){
           required/>
           <div className="container_private_input">
             Private <input 
-            onChange={(e) => { fillForm(e) }} 
+            onClick={(e) => { fillForm(e) }} 
             className='input_private' 
             type="checkbox" 
             placeholder="private" 

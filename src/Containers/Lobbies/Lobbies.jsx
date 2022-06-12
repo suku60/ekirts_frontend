@@ -7,6 +7,7 @@ import Notification from '../../Components/Notification/Notification';
 import LobbyCard from '../../Components/LobbyCard/LobbyCard';
 
 import { connect } from "react-redux";
+import { ANIMATIONSLOG } from '../../redux/types';
 
 import './Lobbies.css';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +21,8 @@ const Lobbies = (props) => {
 
   const [notificationDisplay, setNotificationDisplay] = useState("none");
   const [msg, setMsg] = useState("");
-  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(true);
+
+  const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(props.userOptions.animations);
   const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
 
 
@@ -44,10 +46,12 @@ const Lobbies = (props) => {
   const backgroundAnimState = () => {
 
     if(bgAnimationStateContainer){
+      props.dispatch({type: ANIMATIONSLOG, payload: false})
       setBgAnimationStateContainer(false);
       setAnimationTextIndicator("off");
     }else{
       setBgAnimationStateContainer(true);
+      props.dispatch({type: ANIMATIONSLOG, payload: true})
       setAnimationTextIndicator("on");
     }
 
@@ -120,5 +124,7 @@ const Lobbies = (props) => {
 
 export default connect((state) => ({
   passport: state.passport,
-  lobby: state.lobby
+  lobby: state.lobby,
+  userOptions: state.userOptions
+
 }))(Lobbies);
