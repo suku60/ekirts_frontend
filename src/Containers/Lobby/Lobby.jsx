@@ -6,6 +6,7 @@ import axios from 'axios';
 
 import './Lobby.css';
 import Loader from '../../Components/Loader/Loader';
+import Notification from '../../Components/Notification/Notification';
 
 const Lobby = (props) => {
 
@@ -13,7 +14,8 @@ const Lobby = (props) => {
 
     let navigate = useNavigate("");
 
-    const [msg, setMsg] = useState("");
+    const [notificationDisplay, setNotificationDisplay] = useState("none");
+    const [customMsg, setCustomMsg] = useState("");
 
     const [playersData, setPlayersData] = useState([]);
     const [userPlayerId, setUserPlayerId] = useState(undefined);
@@ -23,6 +25,8 @@ const Lobby = (props) => {
 
     const [loaderDisplay, setLoaderDisplay] = useState("none");
     const [joinButtonDisplay, setJoinButtonDisplay] = useState("flex");
+
+    
     
     // const [displayOwnerPannel, setDisplayOwnerPannel] = useState("none");
 
@@ -40,8 +44,6 @@ const Lobby = (props) => {
 
     useEffect(()=> {
 
-     
-
       if(!playersData.length) {
         getLobbyData()
         getPlayersData()
@@ -53,9 +55,9 @@ const Lobby = (props) => {
 
         console.log(playersData[i].userId, props.passport.user.id)
           if(playersData[i].userId === props.passport?.user?.id) {
-            setMsg("You are already in this lobby");
             setIsUserAbleToJoin(false);
-            console.log("You are already in this lobby");
+            setCustomMsg("User has joined this lobby");
+            return 
           }
         }
       }
@@ -80,7 +82,6 @@ const Lobby = (props) => {
           setIsPlayerJoining(false)
         }
 
-
         if(!props.passport?.token){
             navigate("/");
         }
@@ -90,14 +91,8 @@ const Lobby = (props) => {
               setJoinButtonDisplay("none");
             }
           }
-        // if(props.passport?.user?.id === props.lobby?.lobbydata?.ownerId){
-        //     setDisplayOwnerPannel("flex")
-        // }
-
 
     },[playersData, isPlayerJoining]);
-
-    // console.log("playersData", playersData);
 
     const getLobbyData = async () => {
 
@@ -106,12 +101,10 @@ const Lobby = (props) => {
       try {
           
           let lobbyData = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/find/${lobbyId}`, config);
-     
-          // console.log("data", lobbyData.data)
 
       } catch (error) {
 
-          setMsg(error.data)
+          setCustomMsg(error.data)
           console.log(error)
 
       }
@@ -138,7 +131,7 @@ const Lobby = (props) => {
         } catch (error) {
   
           setLoaderDisplay("none");
-          setMsg(error.data)
+          setCustomMsg(error.data)
           console.log(error)
 
   
@@ -160,12 +153,10 @@ const Lobby = (props) => {
         let colorsResponse = await axios.get(`https://www.thecolorapi.com/id?hsl=${randomNumber},100%,34%&format=json`)
 
         joinLobby(lobbyId, colorsResponse?.data?.hex?.value)
-        // setPlayerColorData(colorsResponse?.data?.hex?.value)
-
 
       }catch(error){
         
-        setMsg("Error while fetching colors")
+        setCustomMsg("Error while fetching colors")
         setLoaderDisplay("none");
         console.log(error)
 
@@ -182,8 +173,6 @@ const Lobby = (props) => {
 
       setLoaderDisplay("flex");
 
-      console.log(lobby, color)
-  
       let addingPlayerdataResponse;
   
       let playerJoiningDatabody = {
@@ -196,37 +185,28 @@ const Lobby = (props) => {
   
         let addingPlayerdataResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/players/create`, playerJoiningDatabody, config);
   
-  
         if(!addingPlayerdataResponse?.data?.id){
   
           setLoaderDisplay("none");
-          setMsg(addingPlayerdataResponse.data)
-          // console.log(addingPlayerdataResponse.data)
+          setCustomMsg(addingPlayerdataResponse.data)
           
         }else{
   
-          // console.log("entro en else")
           setIsPlayerJoining(true);
-          // console.log(isPlayerJoining)
-
           setLoaderDisplay("none");
           navigate(`/lobbies/${lobby}`)
   
         }
   
-  
       }catch(error) {
   
         setLoaderDisplay("none");
-        setMsg("Can't join this lobby right now")
+        setCustomMsg("Can't join this lobby right now")
         console.log(2, error)
       
       }
   
     }
-
-    // console.log(isPlayerJoining)
-
 
     const leaveLobby = async (pk) => {
 
@@ -246,7 +226,7 @@ const Lobby = (props) => {
         } catch (error) {
 
           setLoaderDisplay("none");  
-          setMsg(error.data)
+          setCustomMsg(error.data)
           console.log(error)
     
         }
@@ -267,7 +247,7 @@ const Lobby = (props) => {
   
     //     } catch (error) {
   
-    //         setMsg(error.data)
+    //         setCustomMsg(error.data)
     
     //     }
     // }    
@@ -275,9 +255,11 @@ const Lobby = (props) => {
     // console.log("lobbydata", lobbyId, "playersData", playersData, "user", props.passport?.user?.id);
 
     // console.log("playersData", playersData);
-  return (
+ 
+    return (
     <div className="box_basic_container box_bg lobby italic_text">
       <Loader loaderState={loaderDisplay}/>
+      <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
       <div className="board centered_content" id='animItemFromBottomToTop'>
         {playersData.map((player, index) => {
           // console.log(player.userId, props.passport?.user?.id)
@@ -286,7 +268,7 @@ const Lobby = (props) => {
               <div key={index} className="player">
                 {/* we may get some random names from an api based on these 2 ids */}
                 <div className="player_data centered_content" style={{ backgroundColor: player.playerColor }}>
-                  <div className="player_name">{player.userId}/{player.id}/YOU32143</div>
+                  <div className="player_name">{props.passport.user.username}</div>
                 </div>
                 <button className="player_leave_btn centered_content" onClick={()=>{leaveLobby(player.id)}}>leave</button>
               </div>
@@ -295,7 +277,7 @@ const Lobby = (props) => {
                 <div key={index} className="player">
                   {/* we may get some random names from an api based on these 2 ids */}
                   <div className="player_data centered_content" style={{ backgroundColor: player.playerColor }}>
-                    <div className="player_name">{player.userId}/{player.id}</div>
+                    <div className="player_name">player nº{player.userId}/{player.id}</div>
                   </div>
                 </div>
             )}}

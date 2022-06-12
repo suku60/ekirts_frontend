@@ -49,6 +49,9 @@ const Sidebar = (props) => {
             <li onClick={()=>{logout()}}> 
               <p className='logout_text li_text'>Logout</p>
             </li>
+            <li onClick={()=>{logout()}}> 
+              <p className='logout_text li_text'>Logout</p>
+            </li>
             </ul>
     )
 }
