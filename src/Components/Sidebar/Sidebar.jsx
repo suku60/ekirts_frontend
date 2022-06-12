@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 const Sidebar = (props) => {
 
+
     let navigate = useNavigate();
 
     const [sidebarDisplay, setSidebarDisplay] = useState("flex");
@@ -53,5 +54,6 @@ const Sidebar = (props) => {
 }
 
 export default connect((state) => ({
-  passport: state.passport
+  passport: state.passport,
+  lobby: state.lobby,
 }))(Sidebar);

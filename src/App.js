@@ -20,7 +20,7 @@ function App() {
         },
         {zIndex: "1",
         name: "Lobby",
-        path: "/Lobby/:id"
+        path: "/lobbies/:id"
         }
         ]}/>
 

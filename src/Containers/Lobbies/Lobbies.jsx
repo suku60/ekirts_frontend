@@ -86,7 +86,7 @@ const Lobbies = (props) => {
 
   }
 
-  console.log("lobbies", lobbies)
+  // console.log("lobbies", lobbies)
 
   return (
     <div className="box_basic_container Lobbies">

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './LobbyCard.css';
 
 import { connect } from "react-redux";
-import { LOBBYJOIN, LOBBYWATCH } from "../../redux/types";
+import { LOBBYLOG, ISUSERJOININGLOBBY } from "../../redux/types";
 
 import {ReactComponent as PrivateSvg} from '../../assets/svg/private.svg'
 import {ReactComponent as PublicSvg} from '../../assets/svg/public.svg'
@@ -26,11 +26,13 @@ const LobbyCard = (props) => {
 
     
     if(action === "join"){
+      props.dispatch({type: LOBBYLOG, payload: selectedLobbyId})
+      props.dispatch({type: ISUSERJOININGLOBBY, payload: true})
       navigate(`/lobbies/${selectedLobbyId}`)
-      props.dispatch({type: LOBBYJOIN, payload: selectedLobbyId})
     }else{
+      props.dispatch({type: LOBBYLOG, payload: selectedLobbyId})
+      props.dispatch({type: ISUSERJOININGLOBBY, payload: false})
       navigate(`/lobbies/${selectedLobbyId}`)
-      props.dispatch({type: LOBBYWATCH, payload: selectedLobbyId})
     }
     // desiredView(`/lobbies/${lobby.id + Math.round(666*Math.random(666))}`)
 

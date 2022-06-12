@@ -35,6 +35,8 @@
   --card-height-1200px-br: 45vw;
   --card-height-600px-br: 100vw;
 
+  --neon-color-white: hsl(10, 90%, 93%);
+  
   --neon-color-red: hsl(16, 99%, 55%);
   
   --neon-color-blue: hsl(208, 100%, 53%);
