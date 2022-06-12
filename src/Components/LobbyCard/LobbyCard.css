@@ -217,7 +217,7 @@ svg {
     }
 
     .lobby_card_name {
-        background: linear-gradient(to right, transparent, var(--neon-color-dark-2) 5%, var(--neon-color-dark-0), transparent);
+        background: linear-gradient(to top, transparent, var(--neon-color-dark-2));
         background-color: var(--neon-color-dark);
 
         color: var(--neon-color-blue);

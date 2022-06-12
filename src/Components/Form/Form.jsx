@@ -10,8 +10,9 @@ import Loader from '../Loader/Loader';
 
 // REDUX
 import { connect } from 'react-redux';
-import { LOGIN } from '../../redux/types';
+import { LOGIN, LOBBYLOG } from '../../redux/types';
 import { deployURL, mainURL, localURl } from '../../environments';
+
 
 const Form = (props) => {
 
@@ -62,6 +63,15 @@ const Form = (props) => {
       });
     }
 
+    if(!props.formType){
+      setUserData({
+        lobbyName: "",
+        privateGame: false,
+        playersSize: 4,
+        turnSecondsTimer: 8,
+        gameMaxMinutesTimer: 30,
+      })
+    }
     // if(customMsg !== ""){
 
     //   setTimeout(() => {
@@ -249,6 +259,53 @@ const Form = (props) => {
 
   }
 
+  const createLobby = async () => {
+
+    setLoaderDisplay("flex");
+
+    let dataBody = {
+      lobbyName: userData.lobbyName,
+      ownerId: props.passport.user.id,
+      privateGame: userData.privateGame,
+      playersSize: userData.playersSize,
+      turnSecondsTimer: userData.turnSecondsTimer,
+      gameMaxMinutesTimer: userData.gameMaxMinutesTimer,
+    }
+
+    if(!dataBody.lobbyName){
+
+      setCustomMsg("You must choose a name for your lobby");
+      setLoaderDisplay("none");
+
+    }else{
+
+      try  {
+
+        let config = {
+          headers: { Authorization: `Bearer ${props?.passport?.token}` }
+      };
+
+        let newLobbyResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/lobbies/create`, dataBody, config);
+
+        if(!newLobbyResponse?.data?.lobby){
+
+          setCustomMsg("Lobbyname already in use");
+
+        }else{
+
+          props.dispatch({ type: LOBBYLOG, payload: newLobbyResponse.data.lobby });
+  
+
+        }
+
+      }catch(errorDisplay) {
+
+      setCustomMsg("Lobby creation failed");
+
+      }
+    }
+};
+
   // this has to be refactored soon 
 switch(formType){
 
@@ -344,35 +401,47 @@ switch(formType){
         className="close_form_button centered_content" 
         onClick={()=>{setFormDisplay("none")}}>ⓧ</button>
         <form className='centered_content'>
-          <h1>Create your account DEFAULT</h1>
+          <h1>New lobby</h1>
           <input 
           onChange={(e) => { fillForm(e) }} 
-          type="text" 
-          name="email" 
-          placeholder="email" 
+          className='input_lobbyName' 
+          type="name" 
+          placeholder="name of your lobby" 
+          name="lobbyName"
           required/>
           <input 
           onChange={(e) => { fillForm(e) }} 
-          type="text" 
-          name="username" 
-          placeholder="username" 
+          className='input_playersSize' 
+          type="number" 
+          placeholder="max players allowed" 
+          name="playersSize"
           required/>
           <input 
           onChange={(e) => { fillForm(e) }} 
-          type="password" 
-          name="password" 
-          placeholder="password" 
+          className='input_turnSecondsTimer' 
+          type="number" 
+          placeholder="seconds/turn" 
+          name="turnSecondsTimer"
           required/>
           <input 
           onChange={(e) => { fillForm(e) }} 
-          type="password" 
-          name="confirmation" 
-          placeholder="confirm your password" 
+          className='input_gameMaxMinutesTimes' 
+          type="number" 
+          placeholder=" minutes max game duration" 
+          name="gameMaxMinutesTimer"
           required/>
-          <p>By clicking Register, you'll agree you are over 18 and our <a href="https://blank.page/">Privacy Policy</a>.</p>
+          <div className="container_private_input">
+            Private <input 
+            onChange={(e) => { fillForm(e) }} 
+            className='input_private' 
+            type="checkbox" 
+            placeholder="private" 
+            name="privateGame"
+            required/>
+          </div>
           <button 
           className='form_button centered_children' 
-          onClick={()=>{}}>Register</button>
+          onClick={()=>createLobby()}>CREATE</button>
         </form>
       </div>
     </div>

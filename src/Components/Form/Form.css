@@ -143,6 +143,27 @@ while user uses the form */
 
 }
 
+.container_private_input {
+    height: 15%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0%;
+}
+
+.container_private_input input {
+    box-sizing: border-box;
+    margin: 0%;
+    margin-inline: 1em;
+    padding: 0%;
+
+    height: 3rem;
+}
+
+
 /* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
 
 @media screen and (max-width: 1200px) {

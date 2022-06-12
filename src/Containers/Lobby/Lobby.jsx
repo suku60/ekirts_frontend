@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { connect } from "react-redux";
+import { LOBBYLOG, ISUSERJOININGLOBBY } from "../../redux/types";
 
 import axios from 'axios';
 
@@ -10,7 +12,7 @@ import Notification from '../../Components/Notification/Notification';
 
 const Lobby = (props) => {
 
-  console.log(props.lobby.lobbyData, props.lobby.isUserJoining);
+  // console.log(props);
 
     let navigate = useNavigate("");
 
@@ -44,6 +46,17 @@ const Lobby = (props) => {
 
     useEffect(()=> {
 
+      
+      if(!props.passport?.token){
+        navigate("/");
+       }
+
+      //  CHECK THIS LATER / NOT WORKING PROPERLY
+      if(props.lobby?.lobbyData?.length === 0 || undefined){
+        console.log("Lobby is empty");
+        navigate("/");
+      }
+
       if(!playersData.length) {
         getLobbyData()
         getPlayersData()
@@ -53,9 +66,12 @@ const Lobby = (props) => {
         
         for(let i = 0; i < playersData.length; i++) {
 
-        console.log(playersData[i].userId, props.passport.user.id)
+        // console.log(playersData[i].userId, props.passport.user.id)
           if(playersData[i].userId === props.passport?.user?.id) {
             setIsUserAbleToJoin(false);
+            setIsPlayerJoining(false);
+            props.dispatch({type: ISUSERJOININGLOBBY, payload: false})
+            
             setCustomMsg("User has joined this lobby");
             return 
           }
@@ -66,12 +82,6 @@ const Lobby = (props) => {
         getColor(lobbyId);
       }
 
-      if(!props.passport?.token){
-        navigate("/");
-       }
-      if(!props.lobby.lobbyData){
-        navigate("/lobbies");
-      }
 
     });
 
@@ -142,6 +152,8 @@ const Lobby = (props) => {
 
       if(isUserAbleToJoin){
         setIsUserAbleToJoin(false);
+      }else{
+        return;
       }
 
       setLoaderDisplay("flex");
@@ -212,7 +224,7 @@ const Lobby = (props) => {
 
       setLoaderDisplay("flex");
 
-      console.log(pk)
+      // console.log(pk)
 
         try {
 
@@ -258,9 +270,10 @@ const Lobby = (props) => {
  
     return (
     <div className="box_basic_container box_bg lobby italic_text">
+      
       <Loader loaderState={loaderDisplay}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
-      <div className="board centered_content" id='animItemFromBottomToTop'>
+      <div className="board centered_content" id='animReverseFade'>
         {playersData.map((player, index) => {
           // console.log(player.userId, props.passport?.user?.id)
           if(player.userId === props.passport?.user?.id){

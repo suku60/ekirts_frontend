@@ -94,7 +94,7 @@ const Lobbies = (props) => {
       <Notification notificationDisplay={notificationDisplay} customMsg={msg}/>
       
       <div className="animation_btn centered_content" onClick={()=>{backgroundAnimState()}}>animations {animationTextIndicator}</div>
-     <div className="board"  id='animItemFromTopToBottom'>
+     <div className="board"  id='animReverseFade'>
         
       { lobbies.map(lobbyObject => {
       
