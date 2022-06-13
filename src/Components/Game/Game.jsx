@@ -14,8 +14,6 @@ import AbsoluteBackground from '../AbsoluteBackground/AbsoluteBackground';
 
 const Game = (props) => {
 
-  console.log(props.lobbyData, props.playersData);
-
     let navigate = useNavigate("");
 
     let config = {
@@ -46,7 +44,6 @@ const Game = (props) => {
     // }
 
     const cellClicked = (cell) => {
-      console.log(cell, gameBoard[cell].backgroundColor);
       
       if(gameBoard[cell].backgroundColor === ""){
         let index = cell;
@@ -80,6 +77,7 @@ const Game = (props) => {
   
             setCustomMsg(error.data)
             setLoaderDisplay("none");
+            console.log("error", error)
     
         }
     }

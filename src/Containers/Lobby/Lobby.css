@@ -181,10 +181,12 @@ button, input[type="submit"], input[type="reset"] {
 
     .lobby_name {
         font-size: 1em;
+        padding: 0%;
     }
 
     .container_admin_owner_options {
         height: 8%;
+        margin-bottom: 16%;
     }
 
     .play_btn {

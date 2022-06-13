@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
 import { connect } from "react-redux";
-import { LOGOUT, LOBBYLOG, ISUSERJOININGLOBBY } from "../../redux/types";
+import { LOGOUT, LOBBYLOG, ISUSERJOININGLOBBY, VIEWLOG } from "../../redux/types";
 
 import Form from '../Form/Form';
 
@@ -16,22 +16,41 @@ const Sidebar = (props) => {
 
     const [formState, setFormState] = useState("none");
 
+    const [newLobbyDisplay, setNewLobbyDisplay] = useState("flex");
+
     useEffect(()=> {
-        if(!props.passport?.token){
-            setSidebarDisplay("none")
-        }else{
-            setSidebarDisplay("flex")
-        }
+    console.log(props.userOptions.isUserInLobby)
+
+      if(props.userOptions?.isUserInLobby){
+        setNewLobbyDisplay("none");
+      }else{
+        setNewLobbyDisplay("flex");
+      }
+
+
+      if(!props.passport?.token){
+          setSidebarDisplay("none")
+      }else{
+          setSidebarDisplay("flex")
+      }
+
     },[]);
 
     useEffect(()=> {
+
+      if(props.userOptions?.isUserInLobby){
+        setNewLobbyDisplay("none");
+      }else{
+        setNewLobbyDisplay("flex");
+      }
+
         if(!props.passport?.token){
             setSidebarDisplay("none")
         }else{
             setSidebarDisplay("flex")
         }
         
-    },[sidebarDisplay, props.passport?.token, props.lobby.lobbyData.length]);
+    },[sidebarDisplay, props.passport?.token, props.lobby.lobbyData.length, newLobbyDisplay, props]);
 
     const logout = () => {
       props.dispatch({ type: LOGOUT });
@@ -67,7 +86,9 @@ const Sidebar = (props) => {
                 )
               
             })}
-            <li className="new_lobby_button" onClick={()=>{showForm()}}> 
+            <li className="new_lobby_button" 
+            onClick={()=>{showForm()}}
+            style={{display:newLobbyDisplay}}> 
               <p className='logout_text li_text'>NEW LOBBY</p>
             </li>
             <li onClick={()=>{logout()}}> 
@@ -82,4 +103,5 @@ const Sidebar = (props) => {
 export default connect((state) => ({
   passport: state.passport,
   lobby: state.lobby,
+  userOptions: state.userOptions
 }))(Sidebar);

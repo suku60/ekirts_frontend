@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { connect } from "react-redux";
-import { LOBBYLOG, ISUSERJOININGLOBBY, ANIMATIONSLOG } from "../../redux/types";
+import { LOBBYLOG, ISUSERJOININGLOBBY, ANIMATIONSLOG, VIEWLOG } from "../../redux/types";
 
 import axios from 'axios';
 
@@ -56,6 +56,11 @@ const Lobby = (props) => {
 
     useEffect(()=> {
 
+      // console.log(props.userOptions.isUserInLobby)
+
+      if(!props.userOptions.isUserInLobby){
+        props.dispatch({type: VIEWLOG, payload: true})
+      }
       
       if(!props.passport?.token){
         navigate("/");

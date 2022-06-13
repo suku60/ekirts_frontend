@@ -5,3 +5,4 @@ export const LOBBYLOG = 'lobbylog';
 export const ISUSERJOININGLOBBY = 'isuserjoininglobby';
 
 export const ANIMATIONSLOG = 'animationslog';
+export const VIEWLOG = 'viewlog';

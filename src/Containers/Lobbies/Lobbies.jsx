@@ -7,7 +7,7 @@ import Notification from '../../Components/Notification/Notification';
 import LobbyCard from '../../Components/LobbyCard/LobbyCard';
 
 import { connect } from "react-redux";
-import { ANIMATIONSLOG } from '../../redux/types';
+import { ANIMATIONSLOG, VIEWLOG } from '../../redux/types';
 
 import './Lobbies.css';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +28,12 @@ const Lobbies = (props) => {
 
 
   useEffect(() => {
+
+    // console.log(props.userOptions.isUserInLobby)
+
+    if(props.userOptions.isUserInLobby){
+        props.dispatch({type: VIEWLOG, payload: false})
+    }
 
     if(!lobbies.length){
     bringLobbies();

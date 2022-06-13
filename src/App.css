@@ -1,5 +1,15 @@
 @import url("../src/assets/css/animations.css");
 
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+  overflow-y: scroll; 
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .App {
   text-align: center;
 
