@@ -307,7 +307,7 @@ const Lobby = (props) => {
     }    
 
     return (
-    <div className="box_basic_container box_bg lobby italic_text">
+    <div className="box_basic_container lobby italic_text">
       <Game lobbyData={lobbyData} playersData={playersData} gameDisplay={gameDisplay}/>
       <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Loader loaderState={loaderDisplay}/>
