@@ -40,9 +40,9 @@ const Sidebar = (props) => {
 
     const showForm = () => {
 
-      console.log(formState)
+      // console.log(formState)
       if (!formState) {
-        console.log("noformstate")
+        // console.log("noformstate")
         setFormState(true);
       }else{
         setFormState(false);

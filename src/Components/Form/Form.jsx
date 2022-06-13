@@ -289,7 +289,7 @@ const Form = (props) => {
 
         let newLobbyResponse = await axios.post(`https://cryptic-citadel-48065.herokuapp.com/lobbies/create`, dataBody, config);
 
-        console.log("newLobbyResponse:", newLobbyResponse)
+        // console.log("newLobbyResponse:", newLobbyResponse)
 
         if(!newLobbyResponse?.data?.lobby){
 
@@ -300,11 +300,15 @@ const Form = (props) => {
 
           props.dispatch({type: LOBBYLOG, payload: newLobbyResponse.data.lobby.id})
           props.dispatch({type: ISUSERJOININGLOBBY, payload: true})
-          setLoaderDisplay("none");
-          setFormDisplay("none");
 
-          navigate(`/lobbies/${newLobbyResponse.data.lobby.id}`)
+          setTimeout(() => {
+
+            setLoaderDisplay("none");
+            setFormDisplay("none");
   
+            navigate(`/lobbies/${newLobbyResponse.data.lobby.id}`)
+  
+          }, 1500);
 
         }
 

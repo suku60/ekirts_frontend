@@ -10,6 +10,7 @@ import './Lobby.css';
 import Loader from '../../Components/Loader/Loader';
 import Notification from '../../Components/Notification/Notification';
 import AbsoluteBackground from '../../Components/AbsoluteBackground/AbsoluteBackground';
+import Game from '../../Components/Game/Game';
 
 
 const Lobby = (props) => {
@@ -32,6 +33,8 @@ const Lobby = (props) => {
     const [loaderDisplay, setLoaderDisplay] = useState("none");
     const [joinButtonDisplay, setJoinButtonDisplay] = useState("flex");
     const [displayAdminOptions, setDisplayAdminOptions] = useState("none");
+
+    const [gameDisplay, setGameDisplay] = useState("none");
   
     const [bgAnimationStateContainer, setBgAnimationStateContainer] = useState(props.userOptions.animations);
     const [animationTextIndicator, setAnimationTextIndicator] = useState("on");
@@ -60,7 +63,7 @@ const Lobby = (props) => {
 
       //  CHECK THIS LATER / NOT WORKING PROPERLY
       if(props.lobby?.lobbyData?.length === 0 || undefined){
-        console.log("Lobby is empty");
+        // console.log("Lobby is empty");
         navigate("/");
       }
 
@@ -119,6 +122,10 @@ const Lobby = (props) => {
 
     },[playersData, isPlayerJoining, lobbyData]);
 
+    const playGame = () => {
+      // MAKE VALIDATIONS...
+      setGameDisplay("flex");
+    }
     const backgroundAnimState = () => {
 
       if(bgAnimationStateContainer){
@@ -142,7 +149,6 @@ const Lobby = (props) => {
           let lobbyData = await axios.get(`https://cryptic-citadel-48065.herokuapp.com/lobbies/find/${lobbyId}`, config);
 
           setLobbyData(lobbyData.data);
-          console.log(lobbyData.data);
 
       } catch (error) {
 
@@ -284,7 +290,7 @@ const Lobby = (props) => {
 
             let playerDeletingLobby = await axios.delete(`https://cryptic-citadel-48065.herokuapp.com/lobbies/delete/${pk}`, config);
 
-            console.log("response from deleting lobby", playerDeletingLobby)
+            // console.log("response from deleting lobby", playerDeletingLobby)
 
             if(playerDeletingLobby.status === 200){
               navigate("/lobbies")
@@ -302,6 +308,7 @@ const Lobby = (props) => {
 
     return (
     <div className="box_basic_container box_bg lobby italic_text">
+      <Game lobbyData={lobbyData} playersData={playersData} gameDisplay={gameDisplay}/>
       <AbsoluteBackground bgAnimationState={bgAnimationStateContainer}/>
       <Loader loaderState={loaderDisplay}/>
       <Notification notificationDisplay={notificationDisplay} customMsg={customMsg}/>
@@ -333,7 +340,7 @@ const Lobby = (props) => {
         }
         <div className="player_join_btn centered_content" onClick={()=>{getColor(lobbyId)}}style={{display:joinButtonDisplay}}>join lobby</div>
         <div className="container_admin_owner_options" style={{display: displayAdminOptions}}>
-            <div className="owner_btn play_btn centered_content">play</div>
+            <div className="owner_btn play_btn centered_content" onClick={()=>{playGame(true)}}>play</div>
             <div className="owner_btn delete_btn centered_content" onClick={()=>deleteLobby(lobbyId)}>delete lobby</div>
         </div>
       </div>

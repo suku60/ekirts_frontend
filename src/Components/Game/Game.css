@@ -1,0 +1,231 @@
+.box_game {
+    background-color: var(--neon-color-blue-board-2);
+
+    position: absolute;
+    z-index: 15;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.game_board {
+    background-color: var(--neon-color-blue);
+
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: auto calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) auto;
+    grid-template-rows: calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11);
+
+    padding-top: .5%;
+
+
+
+}
+
+.game_interface {
+    background: linear-gradient(to bottom, transparent, var(--neon-color-dark-2));
+
+    background-color: var(--neon-color-blue-board);
+
+    height: auto;
+    width: 100%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.close_game_button {
+    background: linear-gradient(to bottom, transparent, var(--neon-color-dark-2));
+
+    background-color: var(--neon-color-blue-board);
+    color: var(--neon-color-white-2);
+
+    padding-bottom: 1%;
+    padding: 1%;
+
+    height: 100%;
+
+    cursor: pointer;
+
+}
+
+.close_game_button:hover {
+    background: linear-gradient(to bottom, transparent, var(--neon-color-dark-2));
+    background-color: whitesmoke;
+    color: var(--neon-color-dark);
+
+}
+
+.game_slot {
+    background-color: var(--neon-color-blue-2);
+    margin: .1rem;
+
+    border-radius: .3rem;
+}
+
+
+.game_slot:hover {
+    opacity: .6;
+}
+
+.game_slot:nth-child(1),
+.game_slot:nth-child(12),
+.game_slot:nth-child(13),
+.game_slot:nth-child(24),
+.game_slot:nth-child(25),
+.game_slot:nth-child(36),
+.game_slot:nth-child(37),
+.game_slot:nth-child(48),
+.game_slot:nth-child(49),
+.game_slot:nth-child(60),
+.game_slot:nth-child(61),
+.game_slot:nth-child(72),
+.game_slot:nth-child(73),
+.game_slot:nth-child(84),
+.game_slot:nth-child(85),
+.game_slot:nth-child(96),
+.game_slot:nth-child(97),
+.game_slot:nth-child(108),
+.game_slot:nth-child(109),
+.game_slot:nth-child(120) {
+    background-color: transparent;
+}
+
+.game_slot:nth-child(1):hover,
+.game_slot:nth-child(12):hover,
+.game_slot:nth-child(13):hover,
+.game_slot:nth-child(24):hover,
+.game_slot:nth-child(25):hover,
+.game_slot:nth-child(36):hover,
+.game_slot:nth-child(37):hover,
+.game_slot:nth-child(48):hover,
+.game_slot:nth-child(49):hover,
+.game_slot:nth-child(60):hover,
+.game_slot:nth-child(61):hover,
+.game_slot:nth-child(72):hover,
+.game_slot:nth-child(73):hover,
+.game_slot:nth-child(84):hover,
+.game_slot:nth-child(85):hover,
+.game_slot:nth-child(96):hover,
+.game_slot:nth-child(97):hover,
+.game_slot:nth-child(108):hover,
+.game_slot:nth-child(109):hover,
+.game_slot:nth-child(120):hover {
+    opacity: 1;
+
+
+}
+
+/* 1200PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 1500px) {
+
+    .game_board {
+
+        grid-template-columns: auto calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) auto;
+        grid-template-rows: calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11) calc(100vh/11);
+
+        height: fit-content;
+
+        padding: 1%;
+
+
+
+
+    }
+
+    .close_game_button {
+        padding-bottom: 1%;
+        padding: 2%;
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
+
+
+}
+
+/* 800PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 900px) {
+
+    .game_board {
+        grid-template-columns: auto calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) auto;
+        grid-template-rows: calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12) calc(100vh/12);
+
+
+
+    }
+
+    .game_interface {
+
+        min-height: 10%;
+    }
+}
+
+
+/* 600PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 780px) {
+
+    .game_board {
+        grid-template-columns: auto calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17)
+        calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17) auto;
+        grid-template-rows: calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17)
+        calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17) calc(100vh/17);
+
+
+
+    }
+
+
+
+
+
+}
+
+/* 400PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 550px) {
+
+    .game_board {
+        grid-template-columns: auto calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) 
+        calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) auto;
+        grid-template-rows: calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) 
+        calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19) calc(100vh/19);
+    }
+
+    .game_interface {
+        min-height: 20%;
+    }
+
+
+    .close_game_button {
+        padding: 10%;
+        word-wrap: break-word;
+
+        max-width: 10%;
+
+    }
+
+}
+
+/* 400PX WIDTH SCREEN ADAPTIVE MEDIA */
+@media screen and (max-width: 450px) {
+
+    .game_board {
+        grid-template-columns: auto calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) 
+        calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) auto;
+        grid-template-rows: calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24)
+        calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24) calc(100vh/24);
+    }
+
+}

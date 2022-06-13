@@ -29,6 +29,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/lobbies" element={<Lobbies/>}/>
           <Route path="/lobbies/:id" element={<Lobby/>}/>
+
           
         </Routes>
       
