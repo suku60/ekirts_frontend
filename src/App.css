@@ -1,12 +1,12 @@
 @import url("../src/assets/css/animations.css");
 
-* {
+.board {
   -ms-overflow-style: none;
   scrollbar-width: none; 
   overflow-y: scroll; 
 }
 
-*::-webkit-scrollbar {
+.board::-webkit-scrollbar {
   display: none;
 }
 
