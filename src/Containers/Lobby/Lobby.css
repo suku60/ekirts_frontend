@@ -182,6 +182,7 @@ button, input[type="submit"], input[type="reset"] {
     .lobby_name {
         font-size: 1em;
         padding: 0%;
+        height: fit-content;
     }
 
     .container_admin_owner_options {

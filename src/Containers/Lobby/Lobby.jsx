@@ -322,7 +322,7 @@ const Lobby = (props) => {
           // console.log(player.userId, props.passport?.user?.id)
           if(player.userId === props.passport?.user?.id){
             return (
-              <div key={index} className="player">
+              <div key={index} className="player" style={{ marginBottom:"14%"}}>
                 {/* we may get some random names from an api based on these 2 ids */}
                 <div className="player_data centered_content" style={{ backgroundColor: player.playerColor }}>
                   <div className="player_name">{props.passport.user.username}</div>
@@ -340,7 +340,7 @@ const Lobby = (props) => {
             )}}
           )
         }
-        <div className="player_join_btn centered_content" onClick={()=>{getColor(lobbyId)}}style={{display:joinButtonDisplay}}>join lobby</div>
+        <div className="player_join_btn centered_content" onClick={()=>{getColor(lobbyId)}} style={{display:joinButtonDisplay, marginBottom:"10%"}}>join lobby</div>
         <div className="container_admin_owner_options" style={{display: displayAdminOptions}}>
             <div className="owner_btn play_btn centered_content" onClick={()=>{playGame(true)}}>play</div>
             <div className="owner_btn delete_btn centered_content" onClick={()=>deleteLobby(lobbyId)}>delete lobby</div>
