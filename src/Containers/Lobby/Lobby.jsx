@@ -56,8 +56,6 @@ const Lobby = (props) => {
 
     useEffect(()=> {
 
-      // console.log(props.userOptions.isUserInLobby)
-
       if(!props.userOptions.isUserInLobby){
         props.dispatch({type: VIEWLOG, payload: true})
       }
@@ -65,12 +63,6 @@ const Lobby = (props) => {
       if(!props.passport?.token){
         navigate("/");
        }
-
-      //  CHECK THIS LATER / NOT WORKING PROPERLY
-      if(props.lobby?.lobbyData?.length === 0 || undefined){
-        // console.log("Lobby is empty");
-        navigate("/");
-      }
 
       if(!playersData.length) {
         getLobbyData()
@@ -81,7 +73,6 @@ const Lobby = (props) => {
         
         for(let i = 0; i < playersData.length; i++) {
 
-        // console.log(playersData[i].userId, props.passport.user.id)
           if(playersData[i].userId === props.passport?.user?.id) {
             setIsUserAbleToJoin(false);
             setIsPlayerJoining(false);
@@ -125,12 +116,18 @@ const Lobby = (props) => {
           setDisplayAdminOptions("flex");
         }
 
+        if(lobbyData ===  null){
+          // console.log("Lobby is empty");
+          navigate("/");
+        }
+
     },[playersData, isPlayerJoining, lobbyData]);
 
     const playGame = () => {
       // MAKE VALIDATIONS...
       setGameDisplay("flex");
     }
+    
     const backgroundAnimState = () => {
 
       if(bgAnimationStateContainer){

@@ -19,7 +19,6 @@ const Sidebar = (props) => {
     const [newLobbyDisplay, setNewLobbyDisplay] = useState("flex");
 
     useEffect(()=> {
-    console.log(props.userOptions.isUserInLobby)
 
       if(props.userOptions?.isUserInLobby){
         setNewLobbyDisplay("none");

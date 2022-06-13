@@ -1,6 +1,9 @@
 import React, { useEffect, useState} from 'react';
 import './Notification.css';
 
+import {ReactComponent as CloseSvg} from '../../assets/svg/CloseNotification.svg'
+
+
 const Notification = (props) => {
 
   const [notificationDisplay, setNotificationDisplay] = useState(props.notificationDisplay || "none");
@@ -31,7 +34,9 @@ const Notification = (props) => {
 
   return (
     <div className="box_notification" id="animItemFromRightToLeft" style={{display:notificationDisplay}}>
-        <div className="notification_close_button" onClick={()=>{hideNotification()}}></div>
+        <div className="notification_close_button" onClick={()=>{hideNotification()}}>
+          <CloseSvg/>
+        </div>
         <p>{props.customMsg}</p>
       </div>
   )
